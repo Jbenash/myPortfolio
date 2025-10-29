@@ -15,13 +15,8 @@ const Home = () => {
                 setAbout(response.data.data);
             } catch (error) {
                 console.error('Error fetching about data:', error);
-                // Set default data if API fails
-                setAbout({
-                    name: 'Ben Asher',
-                    tagline: 'Full Stack Developer | Problem Solver | Tech Enthusiast',
-                    profileImage: '/images/profile.jpg',
-                    CV: '/files/resume.pdf'
-                });
+
+
             } finally {
                 setLoading(false);
             }
