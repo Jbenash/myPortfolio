@@ -4,6 +4,8 @@ import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Home from '../pages/Home'
+import About from '../pages/about'
+import Projects from '../pages/Projects';
 
 function App() {
 
@@ -17,6 +19,8 @@ function App() {
               <Routes>
 
                 <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/projects' element={<Projects />} />
               </Routes>
 
             </main>

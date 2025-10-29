@@ -26,5 +26,10 @@ api.interceptors.request.use(
 //step:3 create specific API modules
 export const aboutAPI = {
     getAbout: () => api.get('/about'),
-    updateAbout: (data) => api.post('/about', data)
+
 }
+
+
+export const projectsAPI = {
+    getProjects: () => api.get('/projects'),
+} 
