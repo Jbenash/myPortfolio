@@ -32,4 +32,15 @@ export const aboutAPI = {
 
 export const projectsAPI = {
     getProjects: () => api.get('/projects'),
-} 
+}
+
+export const skillsAPI = {
+    getSkills: () => api.get('/skills')
+
+}
+
+export const contactAPI = {
+    submitContact: (data) => api.post('/contact', data)
+}
+
+
