@@ -25,7 +25,7 @@ const seedData = async () => {
                 name: 'Ben Asher',
                 tagline: 'Full Stack Developer | Backend Enthusiast',
                 bio: 'I am a passionate developer with expertise in building dynamic web applications using React and Node.js. My journey in tech started with a curiosity for how things work, and it has evolved into a deep love for creating seamless user experiences.',
-                profileImage: '/images/profile.jpg',
+                profileImage: 'images/profile.jpg',
                 education: [
                     {
                         degree: 'Computer Science and Technology B.Sc.',
@@ -39,7 +39,7 @@ const seedData = async () => {
                         name: 'Python Beginner to Pro',
                         provider: 'University of Moratuwa',
                         year: '2025',
-                        image: '/images/certificates/python-cert.jpg',
+                        image: 'images/profile.jpg',
                         certificateUrl: 'https://certificate-url.com/python'
                     },
 
@@ -47,13 +47,13 @@ const seedData = async () => {
                         name: 'Developing backend APIs with Node.js and Express',
                         provider: 'Coursera',
                         year: '2025',
-                        image: '/images/certificates/nodejs-cert.jpg',
+                        image: 'images/profile.jpg',
                         certificateUrl: 'https://coursera.com/certificate/xyz123'
                     }
                 ],
                 interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Backend Development', 'Network Security', 'Automation Tools'],
 
-                CV: '/files/resume.pdf'
+                CV: 'files/resume.pdf'
 
             }
         )
@@ -65,7 +65,7 @@ const seedData = async () => {
                     description: 'A platform connecting blood donors with those in need. Features include user registration, blood donation requests, and a real-time blood bank system.',
                     technologies: ['React', 'PHP', 'MySQL'],
                     githubLink: 'https://github.com/Jbenash/LiveOn-BloodDonationSystem.git',
-                    screenshot: '/images/Project1.png',
+                    screenshot: 'images/Project1.png',
                     featured: true,
                     order: 1
                 }
