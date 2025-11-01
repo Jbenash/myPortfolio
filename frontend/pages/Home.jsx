@@ -101,22 +101,28 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <Link
-                            to="/contact"
-                            className="btn-primary flex items-center space-x-2"
-                        >
-                            <span>Get In Touch</span>
-                        </Link>
-                        <a
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                            <Link
+                                to="/contact"
+                                className="btn-primary flex items-center space-x-2"
+                            >
+                                <span>Get In Touch</span>
+                            </Link>
+                        </motion.div>
+                        
+                        <motion.a
                             href={about?.CV || '#'}
                             download="resume.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="btn-secondary flex items-center space-x-2 cursor-pointer"
+                            className="btn-secondary flex items-center space-x-2"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            style={{ cursor: 'pointer' }}
                         >
                             <FiDownload />
                             <span>Download Resume</span>
-                        </a>
+                        </motion.a>
                     </motion.div>
                 </div>
             </section>
