@@ -41,7 +41,7 @@ const seedData = async () => {
                 ],
                 interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Backend Development', 'Network Security', 'Automation Tools'],
 
-                CV: 'https://myportfolio-1-5p8z.onrender.com/uploads/files/resume.pdf'
+                CV: 'https://myportfolio-1-5p8z.onrender.com/api/download/resume'
 
             }
         )

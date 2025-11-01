@@ -109,12 +109,9 @@ const Home = () => {
                                 <span>Get In Touch</span>
                             </Link>
                         </motion.div>
-                        
+
                         <motion.a
                             href={about?.CV || '#'}
-                            download="resume.pdf"
-                            target="_blank"
-                            rel="noopener noreferrer"
                             className="btn-secondary flex items-center space-x-2"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}

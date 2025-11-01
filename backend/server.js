@@ -6,6 +6,7 @@ import aboutRoute from './routes/aboutRoutes.js'
 import projectRoute from './routes/projectRoute.js'
 import skillRoute from './routes/skillRoute.js'
 import contactRoute from './routes/contactRoutes.js'
+import downloadRoute from './routes/downloadRoute.js'
 import { errorHandler, notFound } from './middleware/errorHandler.js';
 
 
@@ -35,6 +36,7 @@ app.use("/api/about", aboutRoute)
 app.use("/api/projects", projectRoute)
 app.use("/api/skills", skillRoute)
 app.use("/api/contact", contactRoute)
+app.use("/api/download", downloadRoute)
 
 app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: "Server is running " })
