@@ -123,44 +123,41 @@ const Home = () => {
             <section className="py-20 px-4 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <Link to="/projects">
-                            <motion.div
-                                whileHover={{ scale: 1.05, y: -5 }}
-                                className="card text-center cursor-pointer"
-                            >
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -5 }}
+                        >
+                            <Link to="/projects" className="card text-center cursor-pointer block">
                                 <div className="text-4xl mb-4">🚀</div>
                                 <h3 className="text-2xl font-bold mb-2">Projects</h3>
                                 <p className="text-gray-600 dark:text-gray-400">
                                     Check out my latest work
                                 </p>
-                            </motion.div>
-                        </Link>
+                            </Link>
+                        </motion.div>
 
-                        <Link to="/skills">
-                            <motion.div
-                                whileHover={{ scale: 1.05, y: -5 }}
-                                className="card text-center cursor-pointer"
-                            >
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -5 }}
+                        >
+                            <Link to="/skills" className="card text-center cursor-pointer block">
                                 <div className="text-4xl mb-4">💼</div>
                                 <h3 className="text-2xl font-bold mb-2">Skills</h3>
                                 <p className="text-gray-600 dark:text-gray-400">
                                     Explore my technical skills
                                 </p>
-                            </motion.div>
-                        </Link>
+                            </Link>
+                        </motion.div>
 
-                        <Link to="/about">
-                            <motion.div
-                                whileHover={{ scale: 1.05, y: -5 }}
-                                className="card text-center cursor-pointer"
-                            >
+                        <motion.div
+                            whileHover={{ scale: 1.05, y: -5 }}
+                        >
+                            <Link to="/about" className="card text-center cursor-pointer block">
                                 <div className="text-4xl mb-4">👤</div>
                                 <h3 className="text-2xl font-bold mb-2">About Me</h3>
                                 <p className="text-gray-600 dark:text-gray-400">
                                     Learn more about me
                                 </p>
-                            </motion.div>
-                        </Link>
+                            </Link>
+                        </motion.div>
                     </div>
                 </div>
             </section>
