@@ -17,6 +17,8 @@ const seedData = async () => {
 
         //clear existing data
         await About.deleteMany()
+        await Project.deleteMany()
+        await Skills.deleteMany()
 
 
         //seed about information 
