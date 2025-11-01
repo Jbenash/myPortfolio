@@ -24,6 +24,9 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Serve static files from public directory
+app.use('/uploads', express.static('public'));
+
 app.use("/api/about", aboutRoute)
 app.use("/api/projects", projectRoute)
 app.use("/api/skills", skillRoute)
