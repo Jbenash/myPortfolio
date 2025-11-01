@@ -33,16 +33,19 @@ const Home = () => {
                 responseType: 'blob',
             });
             
-            // Create a blob URL and trigger download
-            const blob = new Blob([response.data], { type: 'application/pdf' });
-            const url = window.URL.createObjectURL(blob);
+            // response.data is already a blob, use it directly
+            const url = window.URL.createObjectURL(response.data);
             const link = document.createElement('a');
             link.href = url;
             link.download = 'Ben_Asher_Resume.pdf';
             document.body.appendChild(link);
             link.click();
-            document.body.removeChild(link);
-            window.URL.revokeObjectURL(url);
+            
+            // Cleanup
+            setTimeout(() => {
+                document.body.removeChild(link);
+                window.URL.revokeObjectURL(url);
+            }, 100);
         } catch (error) {
             console.error('Error downloading resume:', error);
             // Fallback to direct link
