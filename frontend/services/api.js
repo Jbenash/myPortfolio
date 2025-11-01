@@ -41,6 +41,7 @@ export const skillsAPI = {
 
 export const contactAPI = {
     submitContact: (data) => api.post('/contact', data)
+
 }
 
 
