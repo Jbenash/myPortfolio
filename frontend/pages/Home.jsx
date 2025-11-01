@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { aboutAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 
 const Home = () => {
+    const navigate = useNavigate();
     const [about, setAbout] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -101,12 +102,13 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <Link
-                            to="/contact"
+                        <button
+                            type="button"
+                            onClick={() => navigate('/contact')}
                             className="btn-primary flex items-center space-x-2"
                         >
                             <span>Get In Touch</span>
-                        </Link>
+                        </button>
                         <a
                             href={about?.CV}
                             download
@@ -125,38 +127,47 @@ const Home = () => {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <motion.div
                             whileHover={{ scale: 1.05, y: -5 }}
+                            onClick={() => navigate('/projects')}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate('/projects')}
+                            className="card text-center cursor-pointer"
                         >
-                            <Link to="/projects" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">🚀</div>
-                                <h3 className="text-2xl font-bold mb-2">Projects</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Check out my latest work
-                                </p>
-                            </Link>
+                            <div className="text-4xl mb-4">🚀</div>
+                            <h3 className="text-2xl font-bold mb-2">Projects</h3>
+                            <p className="text-gray-600 dark:text-gray-400">
+                                Check out my latest work
+                            </p>
                         </motion.div>
 
                         <motion.div
                             whileHover={{ scale: 1.05, y: -5 }}
+                            onClick={() => navigate('/skills')}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate('/skills')}
+                            className="card text-center cursor-pointer"
                         >
-                            <Link to="/skills" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">💼</div>
-                                <h3 className="text-2xl font-bold mb-2">Skills</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Explore my technical skills
-                                </p>
-                            </Link>
+                            <div className="text-4xl mb-4">💼</div>
+                            <h3 className="text-2xl font-bold mb-2">Skills</h3>
+                            <p className="text-gray-600 dark:text-gray-400">
+                                Explore my technical skills
+                            </p>
                         </motion.div>
 
                         <motion.div
                             whileHover={{ scale: 1.05, y: -5 }}
+                            onClick={() => navigate('/about')}
+                            role="button"
+                            tabIndex={0}
+                            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && navigate('/about')}
+                            className="card text-center cursor-pointer"
                         >
-                            <Link to="/about" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">👤</div>
-                                <h3 className="text-2xl font-bold mb-2">About Me</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Learn more about me
-                                </p>
-                            </Link>
+                            <div className="text-4xl mb-4">👤</div>
+                            <h3 className="text-2xl font-bold mb-2">About Me</h3>
+                            <p className="text-gray-600 dark:text-gray-400">
+                                Learn more about me
+                            </p>
                         </motion.div>
                     </div>
                 </div>
