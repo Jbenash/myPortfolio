@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
@@ -15,7 +15,11 @@ function App() {
   return (
     <>
       <ThemeProvider>
-        <Router>
+        {(() => {
+          // Use HashRouter in production to avoid server-side rewrite issues
+          const RouterComponent = import.meta.env.PROD ? HashRouter : BrowserRouter;
+          return (
+            <RouterComponent>
           <div className="min-h-screen flex flex-col">
             <Navbar />
             <main className="flex-grow">
@@ -32,7 +36,9 @@ function App() {
             </main>
             <Footer />
           </div>
-        </Router>
+            </RouterComponent>
+          );
+        })()}
       </ThemeProvider>
     </>
   )
