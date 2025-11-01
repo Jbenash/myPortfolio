@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
 import EmailModal from '../components/EmailModel';
@@ -31,21 +32,21 @@ const Footer = () => {
 
                     {/* Quick Navigation */}
                     <nav className="flex flex-wrap justify-center gap-6 text-sm">
-                        <a href="/" className="text-gray-300 hover:text-primary-400 transition-colors">
+                        <Link to="/" className="text-gray-300 hover:text-primary-400 transition-colors">
                             Home
-                        </a>
-                        <a href="/about" className="text-gray-300 hover:text-primary-400 transition-colors">
+                        </Link>
+                        <Link to="/about" className="text-gray-300 hover:text-primary-400 transition-colors">
                             About
-                        </a>
-                        <a href="/projects" className="text-gray-300 hover:text-primary-400 transition-colors">
+                        </Link>
+                        <Link to="/projects" className="text-gray-300 hover:text-primary-400 transition-colors">
                             Projects
-                        </a>
-                        <a href="/skills" className="text-gray-300 hover:text-primary-400 transition-colors">
+                        </Link>
+                        <Link to="/skills" className="text-gray-300 hover:text-primary-400 transition-colors">
                             Skills
-                        </a>
-                        <a href="/contact" className="text-gray-300 hover:text-primary-400 transition-colors">
+                        </Link>
+                        <Link to="/contact" className="text-gray-300 hover:text-primary-400 transition-colors">
                             Contact
-                        </a>
+                        </Link>
                     </nav>
 
                     {/* Social Icons */}
