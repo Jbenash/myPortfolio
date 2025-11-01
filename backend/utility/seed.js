@@ -37,21 +37,7 @@ const seedData = async () => {
                     }
                 ],
                 courses: [
-                    {
-                        name: 'Python Beginner to Pro',
-                        provider: 'University of Moratuwa',
-                        year: '2025',
-                        image: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/profile.jpg',
-                        certificateUrl: 'https://certificate-url.com/python'
-                    },
 
-                    {
-                        name: 'Developing backend APIs with Node.js and Express',
-                        provider: 'Coursera',
-                        year: '2025',
-                        image: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/profile.jpg',
-                        certificateUrl: 'https://coursera.com/certificate/xyz123'
-                    }
                 ],
                 interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Backend Development', 'Network Security', 'Automation Tools'],
 
