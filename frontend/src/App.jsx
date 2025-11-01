@@ -4,7 +4,7 @@ import { ThemeProvider } from '../context/ThemeContext';
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Home from '../pages/Home'
-import About from '../pages/about'
+import About from '../pages/About'
 import Projects from '../pages/Projects';
 import Skills from '../pages/Skills';
 import Contact from '../pages/contact';
