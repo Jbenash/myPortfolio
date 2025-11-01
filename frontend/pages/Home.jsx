@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { aboutAPI } from '../services/api';
@@ -100,14 +101,14 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.6 }}
                         className="flex flex-col sm:flex-row gap-4 justify-center items-center"
                     >
-                        <a
-                            href="/contact"
+                        <Link
+                            to="/contact"
                             className="btn-primary flex items-center space-x-2"
                         >
                             <span>Get In Touch</span>
-                        </a>
+                        </Link>
                         <a
-                            href={about?.resume}
+                            href={about?.CV}
                             download
                             className="btn-secondary flex items-center space-x-2"
                         >
@@ -122,41 +123,44 @@ const Home = () => {
             <section className="py-20 px-4 bg-white dark:bg-gray-900">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <motion.a
-                            href="/projects"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="card text-center cursor-pointer"
-                        >
-                            <div className="text-4xl mb-4">🚀</div>
-                            <h3 className="text-2xl font-bold mb-2">Projects</h3>
-                            <p className="text-gray-600 dark:text-gray-400">
-                                Check out my latest work
-                            </p>
-                        </motion.a>
+                        <Link to="/projects">
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -5 }}
+                                className="card text-center cursor-pointer"
+                            >
+                                <div className="text-4xl mb-4">🚀</div>
+                                <h3 className="text-2xl font-bold mb-2">Projects</h3>
+                                <p className="text-gray-600 dark:text-gray-400">
+                                    Check out my latest work
+                                </p>
+                            </motion.div>
+                        </Link>
 
-                        <motion.a
-                            href="/skills"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="card text-center cursor-pointer"
-                        >
-                            <div className="text-4xl mb-4">💼</div>
-                            <h3 className="text-2xl font-bold mb-2">Skills</h3>
-                            <p className="text-gray-600 dark:text-gray-400">
-                                Explore my technical skills
-                            </p>
-                        </motion.a>
+                        <Link to="/skills">
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -5 }}
+                                className="card text-center cursor-pointer"
+                            >
+                                <div className="text-4xl mb-4">💼</div>
+                                <h3 className="text-2xl font-bold mb-2">Skills</h3>
+                                <p className="text-gray-600 dark:text-gray-400">
+                                    Explore my technical skills
+                                </p>
+                            </motion.div>
+                        </Link>
 
-                        <motion.a
-                            href="/about"
-                            whileHover={{ scale: 1.05, y: -5 }}
-                            className="card text-center cursor-pointer"
-                        >
-                            <div className="text-4xl mb-4">👤</div>
-                            <h3 className="text-2xl font-bold mb-2">About Me</h3>
-                            <p className="text-gray-600 dark:text-gray-400">
-                                Learn more about me
-                            </p>
-                        </motion.a>
+                        <Link to="/about">
+                            <motion.div
+                                whileHover={{ scale: 1.05, y: -5 }}
+                                className="card text-center cursor-pointer"
+                            >
+                                <div className="text-4xl mb-4">👤</div>
+                                <h3 className="text-2xl font-bold mb-2">About Me</h3>
+                                <p className="text-gray-600 dark:text-gray-400">
+                                    Learn more about me
+                                </p>
+                            </motion.div>
+                        </Link>
                     </div>
                 </div>
             </section>
