@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
 import { aboutAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
+import axios from 'axios';
 
 const Home = () => {
     const [about, setAbout] = useState(null);
@@ -25,6 +26,29 @@ const Home = () => {
 
         fetchAbout();
     }, []);
+
+    const handleDownload = async () => {
+        try {
+            const response = await axios.get(about?.CV, {
+                responseType: 'blob',
+            });
+            
+            // Create a blob URL and trigger download
+            const blob = new Blob([response.data], { type: 'application/pdf' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Ben_Asher_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+        } catch (error) {
+            console.error('Error downloading resume:', error);
+            // Fallback to direct link
+            window.open(about?.CV, '_blank');
+        }
+    };
 
     if (loading) return <LoadingSpinner />;
 
@@ -110,8 +134,8 @@ const Home = () => {
                             </Link>
                         </motion.div>
 
-                        <motion.a
-                            href={about?.CV || '#'}
+                        <motion.button
+                            onClick={handleDownload}
                             className="btn-secondary flex items-center space-x-2"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
@@ -119,7 +143,7 @@ const Home = () => {
                         >
                             <FiDownload />
                             <span>Download Resume</span>
-                        </motion.a>
+                        </motion.button>
                     </motion.div>
                 </div>
             </section>

@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 // Download resume endpoint
 router.get('/resume', (req, res) => {
     const filePath = path.join(__dirname, '../public/files/resume.pdf');
-    
+
     // Check if file exists
     if (!fs.existsSync(filePath)) {
         console.error('File not found:', filePath);
@@ -22,7 +22,7 @@ router.get('/resume', (req, res) => {
     res.setHeader('Content-Type', 'application/pdf');
     res.setHeader('Content-Disposition', 'attachment; filename="Ben_Asher_Resume.pdf"');
     res.setHeader('Cache-Control', 'no-cache');
-    
+
     // Send the file
     res.sendFile(filePath, (err) => {
         if (err) {
