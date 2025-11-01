@@ -108,9 +108,11 @@ const Home = () => {
                             <span>Get In Touch</span>
                         </Link>
                         <a
-                            href={about?.CV}
-                            download
-                            className="btn-secondary flex items-center space-x-2"
+                            href={about?.CV || '#'}
+                            download="resume.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-secondary flex items-center space-x-2 cursor-pointer"
                         >
                             <FiDownload />
                             <span>Download Resume</span>
