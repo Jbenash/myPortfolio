@@ -24,8 +24,12 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from public directory
-app.use('/uploads', express.static('public'));
+// Serve static files from public directory with download headers
+app.use('/uploads', (req, res, next) => {
+    res.setHeader('Content-Disposition', 'attachment');
+    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+    next();
+}, express.static('public'));
 
 app.use("/api/about", aboutRoute)
 app.use("/api/projects", projectRoute)
