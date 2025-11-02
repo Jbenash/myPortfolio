@@ -18,20 +18,33 @@ router.get('/resume', (req, res) => {
         return res.status(404).json({ error: 'File not found' });
     }
 
-    // Set proper headers for PDF download
-    res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', 'attachment; filename="Ben_Asher_Resume.pdf"');
-    res.setHeader('Cache-Control', 'no-cache');
+    // Get file stats for proper content-length
+    const stat = fs.statSync(filePath);
 
-    // Send the file
-    res.sendFile(filePath, (err) => {
-        if (err) {
-            console.error('Error sending file:', err);
-            if (!res.headersSent) {
-                res.status(500).json({ error: 'Error downloading file' });
-            }
+    // Set comprehensive headers for cross-browser and mobile compatibility
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Length', stat.size);
+    res.setHeader('Content-Disposition', 'attachment; filename="Ben_Asher_Resume.pdf"');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.setHeader('Pragma', 'no-cache');
+    res.setHeader('Expires', '0');
+    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition, Content-Length');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+
+    // Stream the file instead of using sendFile for better reliability
+    const fileStream = fs.createReadStream(filePath);
+
+    fileStream.on('error', (err) => {
+        console.error('Error streaming file:', err);
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Error downloading file' });
         }
     });
+
+    fileStream.pipe(res);
 });
 
 export default router;

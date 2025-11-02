@@ -29,27 +29,61 @@ const Home = () => {
 
     const handleDownload = async () => {
         try {
-            const response = await axios.get(about?.CV, {
-                responseType: 'blob',
+            // For mobile compatibility, use fetch API with proper error handling
+            const response = await fetch(about?.CV, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/pdf',
+                },
             });
-            
-            // response.data is already a blob, use it directly
-            const url = window.URL.createObjectURL(response.data);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            // Get the blob from response
+            const blob = await response.blob();
+
+            // Verify it's a PDF
+            if (blob.type !== 'application/pdf' && blob.size === 0) {
+                throw new Error('Invalid file received');
+            }
+
+            // Create download link with proper blob URL
+            const url = window.URL.createObjectURL(blob);
             const link = document.createElement('a');
             link.href = url;
             link.download = 'Ben_Asher_Resume.pdf';
+            link.setAttribute('type', 'application/pdf');
+
+            // For iOS Safari compatibility
+            link.style.display = 'none';
             document.body.appendChild(link);
+
+            // Trigger download
             link.click();
-            
-            // Cleanup
+
+            // Cleanup with delay for mobile browsers
             setTimeout(() => {
                 document.body.removeChild(link);
                 window.URL.revokeObjectURL(url);
-            }, 100);
+            }, 250);
+
         } catch (error) {
             console.error('Error downloading resume:', error);
-            // Fallback to direct link
-            window.open(about?.CV, '_blank');
+
+            // Enhanced fallback for mobile devices
+            try {
+                // Try direct window.open for mobile browsers
+                const newWindow = window.open(about?.CV, '_blank');
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    // If popup blocked, show alert
+                    alert('Please allow pop-ups to download the resume, or try again.');
+                }
+            } catch (fallbackError) {
+                console.error('Fallback download failed:', fallbackError);
+                alert('Download failed. Please try again or contact support.');
+            }
         }
     };
 

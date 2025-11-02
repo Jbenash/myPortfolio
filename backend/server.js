@@ -18,17 +18,28 @@ dotenv.config();
 connectDB();
 
 app.use(cors({
-    origin: process.env.CLIENT_URL,
-    credentials: true
+    origin: process.env.CLIENT_URL || '*',
+    credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
+    exposedHeaders: ['Content-Disposition', 'Content-Length', 'Content-Type']
 }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve static files from public directory with download headers
+// Serve static files from public directory with proper headers
 app.use('/uploads', (req, res, next) => {
-    res.setHeader('Content-Disposition', 'attachment');
+    // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition, Content-Length, Content-Type');
+
+    // Don't set Content-Disposition here - let file type determine behavior
+    // Only add download header for PDFs if explicitly requested
+    if (req.path.endsWith('.pdf') && req.query.download === 'true') {
+        res.setHeader('Content-Disposition', 'attachment');
+    }
     next();
 }, express.static('public'));
 
