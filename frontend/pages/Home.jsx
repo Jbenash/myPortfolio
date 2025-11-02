@@ -32,18 +32,18 @@ const Home = () => {
         // This bypasses blob/fetch issues that can cause corruption
         const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
         const downloadUrl = `${baseUrl}/api/download/resume`;
-        
+
         // Create a hidden anchor element
         const link = document.createElement('a');
         link.href = downloadUrl;
         link.download = 'Ben_Asher_Resume.pdf';
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
-        
+
         // Append to body, click, and remove
         document.body.appendChild(link);
         link.click();
-        
+
         // Clean up immediately
         setTimeout(() => {
             document.body.removeChild(link);

@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 
 // Handle OPTIONS request for CORS preflight
 router.options('/resume', (req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
     res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition, Content-Length, Content-Type');
@@ -39,7 +39,7 @@ router.get('/resume', (req, res) => {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
         res.setHeader('Pragma', 'no-cache');
         res.setHeader('Expires', '0');
-        res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+        res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
         res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
         res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
         res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition, Content-Length, Content-Type');

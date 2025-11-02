@@ -18,7 +18,7 @@ dotenv.config();
 connectDB();
 
 app.use(cors({
-    origin: process.env.CLIENT_URL || '*',
+    origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
@@ -31,7 +31,7 @@ app.use(express.urlencoded({ extended: true }));
 // Serve static files from public directory with proper headers
 app.use('/uploads', (req, res, next) => {
     // Set CORS headers
-    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL || '*');
+    res.setHeader('Access-Control-Allow-Origin', process.env.CLIENT_URL);
     res.setHeader('Access-Control-Allow-Methods', 'GET');
     res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition, Content-Length, Content-Type');
 
