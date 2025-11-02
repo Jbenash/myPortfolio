@@ -27,64 +27,27 @@ const Home = () => {
         fetchAbout();
     }, []);
 
-    const handleDownload = async () => {
-        try {
-            // For mobile compatibility, use fetch API with proper error handling
-            const response = await fetch(about?.CV, {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/pdf',
-                },
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            // Get the blob from response
-            const blob = await response.blob();
-
-            // Verify it's a PDF
-            if (blob.type !== 'application/pdf' && blob.size === 0) {
-                throw new Error('Invalid file received');
-            }
-
-            // Create download link with proper blob URL
-            const url = window.URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Ben_Asher_Resume.pdf';
-            link.setAttribute('type', 'application/pdf');
-
-            // For iOS Safari compatibility
-            link.style.display = 'none';
-            document.body.appendChild(link);
-
-            // Trigger download
-            link.click();
-
-            // Cleanup with delay for mobile browsers
-            setTimeout(() => {
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-            }, 250);
-
-        } catch (error) {
-            console.error('Error downloading resume:', error);
-
-            // Enhanced fallback for mobile devices
-            try {
-                // Try direct window.open for mobile browsers
-                const newWindow = window.open(about?.CV, '_blank');
-                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
-                    // If popup blocked, show alert
-                    alert('Please allow pop-ups to download the resume, or try again.');
-                }
-            } catch (fallbackError) {
-                console.error('Fallback download failed:', fallbackError);
-                alert('Download failed. Please try again or contact support.');
-            }
-        }
+    const handleDownload = () => {
+        // Use direct link approach for maximum compatibility
+        // This bypasses blob/fetch issues that can cause corruption
+        const baseUrl = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000';
+        const downloadUrl = `${baseUrl}/api/download/resume`;
+        
+        // Create a hidden anchor element
+        const link = document.createElement('a');
+        link.href = downloadUrl;
+        link.download = 'Ben_Asher_Resume.pdf';
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        
+        // Append to body, click, and remove
+        document.body.appendChild(link);
+        link.click();
+        
+        // Clean up immediately
+        setTimeout(() => {
+            document.body.removeChild(link);
+        }, 100);
     };
 
     if (loading) return <LoadingSpinner />;
