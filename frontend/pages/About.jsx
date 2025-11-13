@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiBook, FiAward, FiHeart } from 'react-icons/fi';
+import { FiBook, FiAward, FiHeart, FiEye, FiDownload } from 'react-icons/fi';
 import { aboutAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
+import CertificateModal from '../components/CertificateModal';
 
 const About = () => {
   const [about, setAbout] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [selectedCertificate, setSelectedCertificate] = useState(null);
 
   useEffect(() => {
     const fetchAbout = async () => {
@@ -125,25 +127,25 @@ const About = () => {
                 >
                   {/* Certificate Image */}
                   {course.image && (
-                    <div className="relative h-48 mb-4 -mt-6 -mx-6 overflow-hidden">
+                    <div className="relative h-48 mb-4 -mt-6 -mx-6 overflow-hidden cursor-pointer">
                       <img
                         src={course.image}
                         alt={`${course.name} Certificate`}
                         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                        onClick={() => setSelectedCertificate(course)}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                      {/* View Certificate Link */}
-                      {course.certificateUrl && (
-                        <a
-                          href={course.certificateUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="absolute bottom-3 right-3 px-4 py-2 bg-white/90 dark:bg-gray-900/90 text-primary-600 dark:text-primary-400 rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-white dark:hover:bg-gray-900"
+                      {/* Action Buttons */}
+                      <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button
+                          onClick={() => setSelectedCertificate(course)}
+                          className="flex items-center gap-2 px-4 py-2 bg-white/95 dark:bg-gray-900/95 text-primary-600 dark:text-primary-400 rounded-lg text-sm font-semibold hover:bg-white dark:hover:bg-gray-900 shadow-lg transform hover:scale-105 transition-all"
                         >
-                          View Certificate →
-                        </a>
-                      )}
+                          <FiEye className="text-lg" />
+                          View
+                        </button>
+                      </div>
                     </div>
                   )}
 
@@ -197,6 +199,14 @@ const About = () => {
           </div>
         </motion.div>
       </div>
+
+      {/* Certificate Modal */}
+      {selectedCertificate && (
+        <CertificateModal
+          certificate={selectedCertificate}
+          onClose={() => setSelectedCertificate(null)}
+        />
+      )}
     </div>
   );
 };
