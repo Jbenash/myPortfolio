@@ -21,22 +21,10 @@ const CertificateModal = ({ certificate, onClose }) => {
   }, []);
 
   const handleDownload = async () => {
-    try {
-      const response = await fetch(certificate.image);
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.download = `${certificate.name.replace(/\s+/g, '_')}_Certificate.jpg`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
-    } catch (error) {
-      console.error('Error downloading certificate:', error);
-      // Fallback: open in new tab
-      window.open(certificate.image, '_blank');
-    }
+    if (!certificate.certificateUrl) return;
+    
+    // Open PDF in new tab for download
+    window.open(certificate.certificateUrl, '_blank');
   };
 
   if (!certificate) return null;
@@ -77,11 +65,11 @@ const CertificateModal = ({ certificate, onClose }) => {
             </button>
           </div>
 
-          {/* Certificate Image */}
+          {/* Certificate Image Preview */}
           <div className="relative bg-gray-100 dark:bg-gray-950 p-4 max-h-[70vh] overflow-auto">
             <img
               src={certificate.image}
-              alt={`${certificate.name} Certificate`}
+              alt={`${certificate.name} Certificate Preview`}
               className="w-full h-auto rounded-lg shadow-lg"
             />
           </div>
@@ -89,29 +77,31 @@ const CertificateModal = ({ certificate, onClose }) => {
           {/* Footer with Actions */}
           <div className="flex items-center justify-between p-4 border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
             <div className="text-sm text-gray-600 dark:text-gray-400">
-              Click on the image to zoom • Press ESC to close
+              Screenshot preview • Press ESC to close
             </div>
             <div className="flex gap-3">
-              {/* Download Button */}
-              <button
-                onClick={handleDownload}
-                className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
-              >
-                <FiDownload className="text-lg" />
-                Download
-              </button>
-
-              {/* View Original Link (if available) */}
+              {/* View PDF Button */}
               {certificate.certificateUrl && (
                 <a
                   href={certificate.certificateUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-600 hover:bg-primary-700 text-white rounded-lg font-medium transition-colors shadow-md hover:shadow-lg"
                 >
                   <FiExternalLink className="text-lg" />
-                  View Original
+                  View PDF Certificate
                 </a>
+              )}
+
+              {/* Download PDF Button */}
+              {certificate.certificateUrl && (
+                <button
+                  onClick={handleDownload}
+                  className="flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-900 dark:text-white rounded-lg font-medium transition-colors"
+                >
+                  <FiDownload className="text-lg" />
+                  Download PDF
+                </button>
               )}
             </div>
           </div>
