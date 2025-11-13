@@ -40,11 +40,11 @@ const seedData = async () => {
                     name: "Python for Beginners",
                     Provider: "University of Morattuwa",
                     year: "2025",
-                    image: "/images/python-certificate.png",
-                    certificateUrl: "/files/Python_for_Beginners_E-Certificate.pdf"
+                    image: "../public/images/python-certificate.png",
+                    certificateUrl: "../public/files/Python_for_Beginners_E-Certificate.pdf"
 
                 }],
-                interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Deep Learning', '', 'Backend Development', 'Network Security', 'Automation Tools'],
+                interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Deep Learning', 'Backend Development', 'Network Security', 'Automation Tools'],
 
                 CV: 'https://myportfolio-1-5p8z.onrender.com/api/download/resume'
 

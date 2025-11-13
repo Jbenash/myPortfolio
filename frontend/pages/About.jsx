@@ -17,7 +17,7 @@ const About = () => {
         setAbout(response.data.data);
       } catch (error) {
         console.error('Error fetching about data:', error);
-      
+
       } finally {
         setLoading(false);
       }
