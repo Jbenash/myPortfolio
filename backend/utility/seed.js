@@ -9,7 +9,7 @@ import Skills from '../model/Skills.js'
 
 
 const seedData = async () => {
-    dotenv.config({ path: '../.env' })
+    dotenv.config()
 
     try {
         await connectDB()
@@ -36,10 +36,15 @@ const seedData = async () => {
                         description: 'Focused on core areas such as programming, database systems, and web development. Throughout the course, I worked on several academic and personal projects that strengthened my practical knowledge of full-stack development. Gained hands-on experience in developing web applications using React.js, Next.js for the frontend and Python, PHP, Node.js using the frameworks Django, Express JS with MySQL, MongoDB for the backend. These projects helped me understand the complete development cycle, from database design to dynamic user interfaces and server-side logic. My studies and project work also deepened my interest in backend development, DevOps, and cybersecurity, motivating me to continue exploring modern technologies.'
                     }
                 ],
-                courses: [
+                courses: [{
+                    name: "Python for Beginners",
+                    Provider: "University of Morattuwa",
+                    year: "2025",
+                    image: "/images/python-certificate.png",
+                    certificateUrl: "/files/Python_for_Beginners_E-Certificate.pdf"
 
-                ],
-                interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Backend Development', 'Network Security', 'Automation Tools'],
+                }],
+                interests: ['Artificial Intelligence', 'Cybersecurity', 'Machine Learning', 'Deep Learning', '', 'Backend Development', 'Network Security', 'Automation Tools'],
 
                 CV: 'https://myportfolio-1-5p8z.onrender.com/api/download/resume'
 
