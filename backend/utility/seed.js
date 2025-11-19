@@ -19,7 +19,7 @@ const seedData = async () => {
         await About.deleteMany({})
         await Project.deleteMany({})
         await Skills.deleteMany({})
-        
+
         // Drop the problematic id index if it exists
         try {
             await Project.collection.dropIndex('id_1')
@@ -27,7 +27,7 @@ const seedData = async () => {
         } catch (err) {
             // Index doesn't exist, continue
         }
-        
+
         console.log('🗑️  Cleared existing data...');
 
         //seed about information 
@@ -75,7 +75,7 @@ const seedData = async () => {
                     description: "A platform helps users to buy clothings basded on their preferability",
                     technologies: ['React', 'NodeJS', 'MongoDB', 'ExpressJS', 'JWT', 'Cloudinary'],
                     githubLink: 'https://github.com/Jbenash/E-Commerce-App',
-                    screenshot: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/E-commerce.png',
+                    screenshot: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/E-Commerce.png',
                     featured: true,
                     order: 2
                 }
@@ -98,7 +98,7 @@ const seedData = async () => {
                 { name: 'PHP', category: 'backend', level: 50, icon: 'php', order: 3 },
                 { name: 'Python', category: 'backend', level: 60, icon: 'python', order: 4 },
                 { name: 'Java', category: 'backend', level: 60, icon: 'java', order: 5 },
-                
+
 
                 // Database
                 { name: 'MongoDB', category: 'database', level: 75, icon: 'mongodb', order: 1 },
