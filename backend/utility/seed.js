@@ -71,7 +71,7 @@ const seedData = async () => {
                     featured: true,
                     order: 1
                 }, {
-                    title: "Shopify-E-Commerce Shopping Platform",
+                    title: "Shopify E-Commerce Shopping Platform",
                     description: "A platform helps users to buy clothings basded on their preferability",
                     technologies: ['React', 'NodeJS', 'MongoDB', 'ExpressJS', 'JWT', 'Cloudinary'],
                     githubLink: 'https://github.com/Jbenash/E-Commerce-App',
