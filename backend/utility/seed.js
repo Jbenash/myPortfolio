@@ -72,7 +72,7 @@ const seedData = async () => {
                     order: 1
                 }, {
                     title: "Shopify E-Commerce Shopping Platform",
-                    description: "A platform helps users to buy clothings basded on their preferability",
+                    description: "Your one-stop online store offering high-quality products at the best prices. Fast delivery, secure checkout, and a smooth shopping experience—all in one place",
                     technologies: ['React', 'NodeJS', 'MongoDB', 'ExpressJS', 'JWT', 'Cloudinary'],
                     githubLink: 'https://github.com/Jbenash/E-Commerce-App',
                     screenshot: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/E-Commerce.png',
