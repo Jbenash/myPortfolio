@@ -15,7 +15,8 @@ import {
     SiCloudinary,
     SiTypescript,
     SiPostgresql,
-    SiRedis
+    SiRedis,
+    SiComposer
 } from 'react-icons/si';
 import { DiJava } from 'react-icons/di';
 import { RiKey2Fill } from 'react-icons/ri';
@@ -43,7 +44,8 @@ const techIcons = {
     'TypeScript': { icon: SiTypescript, color: '#3178C6' },
     'Java': { icon: DiJava, color: '#007396' },
     'PostgreSQL': { icon: SiPostgresql, color: '#4169E1' },
-    'Redis': { icon: SiRedis, color: '#DC382D' }
+    'Redis': { icon: SiRedis, color: '#DC382D' },
+    'Composer': { icon: SiComposer, color: '#885630' }
 };
 
 const ProjectCard = ({ project, index }) => {

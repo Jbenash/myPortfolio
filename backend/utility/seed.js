@@ -65,7 +65,7 @@ const seedData = async () => {
                 {
                     title: 'LiveOn-Blood Donation Platform',
                     description: 'A platform connecting blood donors with those in need. Features include user registration, blood donation requests, and a real-time blood bank system.',
-                    technologies: ['React', 'PHP', 'MySQL'],
+                    technologies: ['React', 'PHP', 'MySQL', 'Composer'],
                     githubLink: 'https://github.com/Jbenash/LiveOn-BloodDonationSystem.git',
                     screenshot: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/Project1.png',
                     featured: true,
