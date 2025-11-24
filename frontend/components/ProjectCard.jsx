@@ -15,9 +15,11 @@ import {
     SiCloudinary,
     SiTypescript,
     SiPostgresql,
-    SiRedis,
-    SiComposer
+    SiRedis
 } from 'react-icons/si';
+import { DiJava } from 'react-icons/di';
+import { RiKey2Fill } from 'react-icons/ri';
+import MailIcon from './MailIcon';
 import { DiJava } from 'react-icons/di';
 import { RiKey2Fill } from 'react-icons/ri';
 
@@ -45,7 +47,7 @@ const techIcons = {
     'Java': { icon: DiJava, color: '#007396' },
     'PostgreSQL': { icon: SiPostgresql, color: '#4169E1' },
     'Redis': { icon: SiRedis, color: '#DC382D' },
-    'Composer': { icon: SiComposer, color: '#885630' }
+    'Composer': { icon: MailIcon, color: '#885630' }
 };
 
 const ProjectCard = ({ project, index }) => {
