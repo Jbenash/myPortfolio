@@ -78,22 +78,25 @@ const ProjectCard = ({ project, index }) => {
                 {/* Technologies */}
                 <div className="flex flex-wrap gap-3 items-center">
                     {project.technologies.map((tech, i) => {
-                        const techInfo = techIcons[tech];
+                        // Normalize the tech name for lookup
+                        const normalizedTech = tech.trim();
+                        const techInfo = techIcons[normalizedTech];
+                        
                         if (techInfo) {
                             const IconComponent = techInfo.icon;
                             return (
                                 <motion.div
                                     key={i}
-                                    whileHover={{ scale: 1.1, y: -2 }}
+                                    whileHover={{ scale: 1.15, y: -3 }}
                                     className="relative group/tech"
                                     title={tech}
                                 >
                                     <IconComponent 
-                                        className="w-6 h-6 transition-colors dark:text-gray-300"
+                                        className="w-7 h-7 transition-all"
                                         style={{ color: techInfo.color }}
                                     />
                                     {/* Tooltip */}
-                                    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded opacity-0 group-hover/tech:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                                    <span className="absolute -top-9 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded shadow-lg opacity-0 group-hover/tech:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
                                         {tech}
                                     </span>
                                 </motion.div>
