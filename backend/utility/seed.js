@@ -40,7 +40,7 @@ const seedData = async () => {
           degree: "Bsc(Hons) in Computer Science and Technology",
           institution: "Uva Wellassa University",
           year: "September 2023 - September 2027",
-          logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/uwu-logo.png",
+          logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/UWU_Logo.jpg",
           description:
             "Pursuing a comprehensive Computer Science degree with a focus on software engineering, web development, and emerging technologies. Actively engaged in projects involving full-stack development, RESTful API design, and database management. Gained hands-on experience in building scalable applications using MERN stack, implementing secure authentication systems, and following industry-standard software development practices including version control, agile methodologies, and MVC architecture.",
         },
