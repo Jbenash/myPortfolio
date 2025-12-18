@@ -145,7 +145,7 @@ const ProjectCard = ({ project, index }) => {
               className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-gray-100 text-gray-900 rounded-lg font-medium transition-colors"
             >
               <FiExternalLink className="w-5 h-5" />
-              <span>View Project</span>
+              <span>Visit Site</span>
             </motion.a>
           )}
         </div>

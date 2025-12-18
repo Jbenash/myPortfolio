@@ -104,6 +104,7 @@ const seedData = async () => {
           "A platform connecting blood donors with those in need. Features include user registration, blood donation requests, and a real-time blood bank system.",
         technologies: ["React", "PHP", "MySQL", "Composer"],
         githubLink: "https://github.com/Jbenash/LiveOn-BloodDonationSystem.git",
+        demoLink: "https://github.com/Jbenash/LiveOn-BloodDonationSystem", // Placeholder or actual link
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/Project1.png",
         featured: true,
@@ -112,7 +113,7 @@ const seedData = async () => {
       {
         title: "Shopify E-Commerce Shopping Platform",
         description:
-          "An e-commerce website built as a practice project, featuring product listings, secure user authentication, image management with Cloudinary, and a complete shopping cart ",
+          "An e-commerce website built as a practice project, featuring product listings, secure user authentication, image management with Cloudinary, and a complete shopping cart.",
         technologies: [
           "React",
           "NodeJS",
@@ -122,10 +123,30 @@ const seedData = async () => {
           "Cloudinary",
         ],
         githubLink: "https://github.com/Jbenash/E-Commerce-App",
+        demoLink: "https://shopify-demo.onrender.com", // Placeholder
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/E-Commerce.png",
         featured: true,
         order: 2,
+      },
+      {
+        title: "Personal Portfolio Website",
+        description:
+          "A modern, responsive portfolio website showcasing my technical journey, projects, and skills. Built with a focus on rich aesthetics, smooth animations, and seamless user experience.",
+        technologies: [
+          "React",
+          "Tailwind CSS",
+          "NodeJS",
+          "MongoDB",
+          "ExpressJS",
+          "Framer Motion",
+        ],
+        githubLink: "https://github.com/Jbenash/myPortfolio",
+        demoLink: "https://myportfolio-1-5p8z.onrender.com",
+        screenshot:
+          "https://myportfolio-1-5p8z.onrender.com/uploads/images/myPortfolio.png",
+        featured: true,
+        order: 3,
       },
     ]);
     await Skills.create([
