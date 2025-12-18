@@ -1,21 +1,31 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { skillsAPI } from '../services/api';
-import LoadingSpinner from '../components/LoadingSpinner';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { skillsAPI } from "../services/api";
+import LoadingSpinner from "../components/LoadingSpinner";
 import {
-  SiReact, SiNextdotjs, SiJavascript, SiHtml5, SiCss3, SiTailwindcss,
-  SiNodedotjs, SiExpress, SiPhp, SiPython,
-  SiMongodb, SiMysql,
-  SiGit, SiVisualstudiocode,
-  SiBootstrap
-} from 'react-icons/si';
-import { DiJava } from 'react-icons/di';
-import { FiCode } from 'react-icons/fi';
+  SiReact,
+  SiNextdotjs,
+  SiJavascript,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiNodedotjs,
+  SiExpress,
+  SiPhp,
+  SiPython,
+  SiMongodb,
+  SiMysql,
+  SiGit,
+  SiVisualstudio,
+  SiBootstrap,
+} from "react-icons/si";
+import { DiJava } from "react-icons/di";
+import { FiCode } from "react-icons/fi";
 
 const Skills = () => {
   const [skills, setSkills] = useState({ grouped: {} });
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('frontend');
+  const [activeTab, setActiveTab] = useState("frontend");
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -23,7 +33,7 @@ const Skills = () => {
         const response = await skillsAPI.getSkills();
         setSkills(response.data);
       } catch (error) {
-        console.error('Error fetching skills:', error);
+        console.error("Error fetching skills:", error);
         setSkills({ grouped: {} });
       } finally {
         setLoading(false);
@@ -34,34 +44,36 @@ const Skills = () => {
   }, []);
 
   const categoryTitles = {
-    frontend: 'Frontend',
-    backend: 'Backend',
-    database: 'Database',
-    tools: 'Other',
+    frontend: "Frontend",
+    backend: "Backend",
+    database: "Database",
+    tools: "Other",
   };
 
   const skillIcons = {
-    'React.js': { icon: SiReact, color: '#61DAFB' },
-    'Next.js': { icon: SiNextdotjs, color: '#000000' },
-    'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
-    'HTML5': { icon: SiHtml5, color: '#E34F26' },
-    'CSS3': { icon: SiCss3, color: '#1572B6' },
-    'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
-    'Bootstrap': { icon: SiBootstrap, color: '#7952B3' },
-    'Node.js': { icon: SiNodedotjs, color: '#339933' },
-    'Express.js': { icon: SiExpress, color: '#000000' },
-    'PHP': { icon: SiPhp, color: '#777BB4' },
-    'Python': { icon: SiPython, color: '#3776AB' },
-    'Java': { icon: DiJava, color: '#007396' },
-    'MongoDB': { icon: SiMongodb, color: '#47A248' },
-    'MySQL': { icon: SiMysql, color: '#4479A1' },
-    'Git': { icon: SiGit, color: '#F05032' },
-    'VS Code': { icon: SiVisualstudiocode, color: '#007ACC' },
+    "React.js": { icon: SiReact, color: "#61DAFB" },
+    "Next.js": { icon: SiNextdotjs, color: "#000000" },
+    JavaScript: { icon: SiJavascript, color: "#F7DF1E" },
+    HTML5: { icon: SiHtml5, color: "#E34F26" },
+    CSS3: { icon: SiCss3, color: "#1572B6" },
+    "Tailwind CSS": { icon: SiTailwindcss, color: "#06B6D4" },
+    Bootstrap: { icon: SiBootstrap, color: "#7952B3" },
+    "Node.js": { icon: SiNodedotjs, color: "#339933" },
+    "Express.js": { icon: SiExpress, color: "#000000" },
+    PHP: { icon: SiPhp, color: "#777BB4" },
+    Python: { icon: SiPython, color: "#3776AB" },
+    Java: { icon: DiJava, color: "#007396" },
+    MongoDB: { icon: SiMongodb, color: "#47A248" },
+    MySQL: { icon: SiMysql, color: "#4479A1" },
+    Git: { icon: SiGit, color: "#F05032" },
+    "VS Code": { icon: SiVisualstudio, color: "#007ACC" },
   };
 
   if (loading) return <LoadingSpinner />;
 
-  const tabs = Object.keys(skills.grouped).filter(cat => ['frontend', 'backend', 'database', 'tools'].includes(cat));
+  const tabs = Object.keys(skills.grouped).filter((cat) =>
+    ["frontend", "backend", "database", "tools"].includes(cat)
+  );
 
   return (
     <div className="min-h-screen pt-24 pb-20 px-4">
@@ -73,9 +85,7 @@ const Skills = () => {
           className="text-center mb-16"
         >
           <h1 className="section-title">My Skills</h1>
-          <p className="section-subtitle">
-            Technologies and tools I work with
-          </p>
+          <p className="section-subtitle">Technologies and tools I work with</p>
         </motion.div>
 
         {/* Tabs */}
@@ -86,8 +96,8 @@ const Skills = () => {
               onClick={() => setActiveTab(category)}
               className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${
                 activeTab === category
-                  ? 'bg-primary-500 text-white shadow-lg scale-105'
-                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  ? "bg-primary-500 text-white shadow-lg scale-105"
+                  : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
               }`}
             >
               {categoryTitles[category]}
@@ -104,7 +114,10 @@ const Skills = () => {
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
           {skills.grouped[activeTab]?.map((skill, index) => {
-            const iconInfo = skillIcons[skill.name] || { icon: FiCode, color: '#6B7280' };
+            const iconInfo = skillIcons[skill.name] || {
+              icon: FiCode,
+              color: "#6B7280",
+            };
             const IconComponent = iconInfo.icon;
 
             return (
