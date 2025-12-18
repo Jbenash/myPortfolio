@@ -39,18 +39,10 @@ const seedData = async () => {
         {
           degree: "Bsc(Hons) in Computer Science and Technology",
           institution: "Uva Wellassa University",
-          year: "September 2022 - September 2026",
+          year: "September 2023 - September 2027",
           logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/uwu-logo.png",
           description:
-            "Fundamentals to Advance computer science field education.",
-        },
-        {
-          degree: "Secondary Education",
-          institution: "Jaffna Hindu College",
-          year: "January 2012 - October 2020",
-          logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/jhc-logo.png",
-          description:
-            "Secondary level education to advance level Mathematics",
+            "Pursuing a comprehensive Computer Science degree with a focus on software engineering, web development, and emerging technologies. Actively engaged in projects involving full-stack development, RESTful API design, and database management. Gained hands-on experience in building scalable applications using MERN stack, implementing secure authentication systems, and following industry-standard software development practices including version control, agile methodologies, and MVC architecture.",
         },
       ],
       technicalSkills: [
@@ -64,7 +56,11 @@ const seedData = async () => {
         { name: "MySQL", icon: "SiMysql", category: "Database" },
         { name: "Git", icon: "SiGit", category: "Tools" },
         { name: "REST APIs", icon: "FiServer", category: "Backend" },
-        { name: "JWT Authentication", icon: "SiJsonwebtokens", category: "Security" },
+        {
+          name: "JWT Authentication",
+          icon: "SiJsonwebtokens",
+          category: "Security",
+        },
         { name: "Tailwind CSS", icon: "SiTailwindcss", category: "Frontend" },
       ],
       softSkills: [
