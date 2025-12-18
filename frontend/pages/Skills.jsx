@@ -94,8 +94,8 @@ const Skills = () => {
 
   if (loading) return <LoadingSpinner />;
 
-  const tabs = ["frontend", "backend", "database", "tools"].filter((cat) =>
-    skills.grouped[cat]
+  const tabs = ["frontend", "backend", "database", "tools"].filter(
+    (cat) => skills.grouped[cat]
   );
 
   return (

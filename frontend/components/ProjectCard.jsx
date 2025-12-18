@@ -73,9 +73,7 @@ const ProjectCard = ({ project, index }) => {
 
       {/* Project Content */}
       <div className="p-6 flex-grow flex flex-col">
-        <h2 className="text-2xl font-bold text-white mb-3">
-          {project.title}
-        </h2>
+        <h2 className="text-2xl font-bold text-white mb-3">{project.title}</h2>
 
         <p className="text-gray-400 text-sm mb-6 flex-grow">
           {project.description}
@@ -86,7 +84,7 @@ const ProjectCard = ({ project, index }) => {
           <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-3">
             Technologies Used
           </p>
-          
+
           {/* Technology Badges */}
           <div className="flex flex-wrap gap-3">
             {project.technologies.map((tech, i) => {

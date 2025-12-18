@@ -2,29 +2,35 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FiDownload, FiArrowDown } from 'react-icons/fi';
-import { aboutAPI } from '../services/api';
+import { aboutAPI, projectsAPI, skillsAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
-import axios from 'axios';
+import ProjectCard from '../components/ProjectCard';
+import About from './About';
+import Skills from './Skills';
+import Contact from './contact';
 
 const Home = () => {
     const [about, setAbout] = useState(null);
+    const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchAbout = async () => {
+        const fetchData = async () => {
             try {
-                const response = await aboutAPI.getAbout();
-                setAbout(response.data.data);
+                const [aboutRes, projectsRes] = await Promise.all([
+                    aboutAPI.getAbout(),
+                    projectsAPI.getProjects()
+                ]);
+                setAbout(aboutRes.data.data);
+                setProjects(projectsRes.data.data);
             } catch (error) {
-                console.error('Error fetching about data:', error);
-
-
+                console.error('Error fetching data:', error);
             } finally {
                 setLoading(false);
             }
         };
 
-        fetchAbout();
+        fetchData();
     }, []);
 
     const handleDownload = () => {
@@ -148,47 +154,42 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Quick Preview Section */}
-            <section className="py-20 px-4 bg-white dark:bg-gray-900">
+            {/* About Section */}
+            <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900">
+                <About />
+            </section>
+
+            {/* Projects Section */}
+            <section id="projects" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
                 <div className="max-w-7xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -5 }}
-                        >
-                            <Link to="/projects" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">🚀</div>
-                                <h3 className="text-2xl font-bold mb-2">Projects</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Check out my latest work
-                                </p>
-                            </Link>
-                        </motion.div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="text-center mb-16"
+                    >
+                        <h2 className="section-title">My Projects</h2>
+                        <p className="section-subtitle">
+                            A collection of projects I've worked on
+                        </p>
+                    </motion.div>
 
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -5 }}
-                        >
-                            <Link to="/skills" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">💼</div>
-                                <h3 className="text-2xl font-bold mb-2">Skills</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Explore my technical skills
-                                </p>
-                            </Link>
-                        </motion.div>
-
-                        <motion.div
-                            whileHover={{ scale: 1.05, y: -5 }}
-                        >
-                            <Link to="/about" className="card text-center cursor-pointer block">
-                                <div className="text-4xl mb-4">👤</div>
-                                <h3 className="text-2xl font-bold mb-2">About Me</h3>
-                                <p className="text-gray-600 dark:text-gray-400">
-                                    Learn more about me
-                                </p>
-                            </Link>
-                        </motion.div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                        {projects.map((project, index) => (
+                            <ProjectCard key={project._id} project={project} index={index} />
+                        ))}
                     </div>
                 </div>
+            </section>
+
+            {/* Skills Section */}
+            <section id="skills" className="py-20 px-4 bg-white dark:bg-gray-900">
+                <Skills />
+            </section>
+
+            {/* Contact Section */}
+            <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
+                <Contact />
             </section>
         </div>
     );
