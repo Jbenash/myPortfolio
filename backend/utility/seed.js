@@ -144,7 +144,7 @@ const seedData = async () => {
         githubLink: "https://github.com/Jbenash/myPortfolio",
         demoLink: "https://my-portfolio-oql4.vercel.app/",
         screenshot:
-          "https://myportfolio-1-5p8z.onrender.com/uploads/images/myportfolio.png",
+          "https://myportfolio-1-5p8z.onrender.com/uploads/images/portfolio_project.png",
         featured: true,
         order: 3,
       },
