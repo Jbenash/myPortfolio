@@ -94,7 +94,7 @@ const About = () => {
                         <img
                           src={edu.logo}
                           alt={edu.institution}
-                          className="w-12 h-12 object-contain"
+                          className="w-full h-full object-cover"
                         />
                       ) : (
                         <FiBook className="text-2xl text-primary-600 dark:text-primary-400" />
