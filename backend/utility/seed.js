@@ -104,7 +104,7 @@ const seedData = async () => {
           "A platform connecting blood donors with those in need. Features include user registration, blood donation requests, and a real-time blood bank system.",
         technologies: ["React", "PHP", "MySQL", "Composer"],
         githubLink: "https://github.com/Jbenash/LiveOn-BloodDonationSystem.git",
-        demoLink: "https://github.com/Jbenash/LiveOn-BloodDonationSystem", // Placeholder or actual link
+        demoLink: "https://www.linkedin.com/posts/ben-asher-78a638275_tech-activity-7398672796815495168-heEy?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMxBVoBvUXeoxyRk_ulSL1iEvw_Xn3q1Iw", // Placeholder or actual link
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/Project1.png",
         featured: true,
@@ -142,7 +142,7 @@ const seedData = async () => {
           "Framer Motion",
         ],
         githubLink: "https://github.com/Jbenash/myPortfolio",
-        demoLink: "https://myportfolio-1-5p8z.onrender.com",
+        demoLink: "https://my-portfolio-oql4.vercel.app/",
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/myportfolio.png",
         featured: true,

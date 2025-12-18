@@ -10,6 +10,13 @@ const Navbar = () => {
   const { isDark, toggleTheme } = useTheme();
   const location = useLocation();
 
+  const handleNavClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setIsOpen(false);
+  };
+
   // Adds a blur and shadow to the navbar when the user scrolls down more than 50px.
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +48,11 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+          <Link
+            to="/"
+            className="flex items-center"
+            onClick={() => handleNavClick('/')}
+          >
             <motion.span
               whileHover={{ scale: 1.05 }}
               className="text-2xl font-bold font-display bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent"
@@ -56,6 +67,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={() => handleNavClick(link.path)}
                 className={`relative text-sm font-medium transition-colors ${isActive(link.path)
                   ? 'text-primary-600 dark:text-primary-400'
                   : 'text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400'
@@ -108,7 +120,7 @@ const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                onClick={() => setIsOpen(false)}
+                onClick={() => handleNavClick(link.path)}
                 className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive(link.path)
                   ? 'bg-primary-100 dark:bg-primary-900 text-primary-600 dark:text-primary-400'
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
