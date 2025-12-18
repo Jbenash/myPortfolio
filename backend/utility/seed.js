@@ -144,7 +144,7 @@ const seedData = async () => {
         githubLink: "https://github.com/Jbenash/myPortfolio",
         demoLink: "https://myportfolio-1-5p8z.onrender.com",
         screenshot:
-          "https://myportfolio-1-5p8z.onrender.com/uploads/images/myPortfolio.png",
+          "https://myportfolio-1-5p8z.onrender.com/uploads/images/myportfolio.png",
         featured: true,
         order: 3,
       },
