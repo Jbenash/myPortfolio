@@ -38,6 +38,14 @@ const aboutSchema = new mongoose.Schema({
             certificateUrl: String
         }
     ],
+    technicalSkills: [
+        {
+            name: String,
+            icon: String,
+            category: String
+        }
+    ],
+    softSkills: [String],
     interests: [String],
     resume: {
         type: String,
