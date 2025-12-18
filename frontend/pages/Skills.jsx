@@ -4,11 +4,12 @@ import { skillsAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 import {
   SiReact, SiNextdotjs, SiJavascript, SiHtml5, SiCss3, SiTailwindcss,
-  SiNodedotjs, SiExpress, SiPhp, SiPython, SiJava,
+  SiNodedotjs, SiExpress, SiPhp, SiPython,
   SiMongodb, SiMysql,
   SiGit, SiVisualstudiocode,
   SiBootstrap
 } from 'react-icons/si';
+import { DiJava } from 'react-icons/di';
 import { FiCode } from 'react-icons/fi';
 
 const Skills = () => {
@@ -51,7 +52,7 @@ const Skills = () => {
     'Express.js': { icon: SiExpress, color: '#000000' },
     'PHP': { icon: SiPhp, color: '#777BB4' },
     'Python': { icon: SiPython, color: '#3776AB' },
-    'Java': { icon: SiJava, color: '#007396' },
+    'Java': { icon: DiJava, color: '#007396' },
     'MongoDB': { icon: SiMongodb, color: '#47A248' },
     'MySQL': { icon: SiMysql, color: '#4479A1' },
     'Git': { icon: SiGit, color: '#F05032' },
