@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiBook, FiAward, FiHeart, FiEye, FiDownload } from 'react-icons/fi';
+import { FiBook, FiAward, FiHeart, FiEye, FiDownload, FiCode, FiUsers, FiCalendar } from 'react-icons/fi';
+import { SiReact, SiNodedotjs, SiMongodb, SiExpress, SiJavascript, SiPython, SiMysql, SiGit, SiTailwindcss } from 'react-icons/si';
 import { aboutAPI } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
 import CertificateModal from '../components/CertificateModal';
@@ -57,7 +58,7 @@ const About = () => {
           </div>
         </motion.div>
 
-        {/* Education Section */}
+        {/* Technical Skills Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -65,41 +66,150 @@ const About = () => {
           className="mb-12"
         >
           <div className="flex items-center mb-6">
+            <FiCode className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
+            <h2 className="text-3xl font-bold font-display">Technical Skills</h2>
+          </div>
+
+          <div className="card">
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-6">
+              {[
+                { icon: SiReact, name: 'React', color: 'text-blue-400' },
+                { icon: SiNodedotjs, name: 'Node.js', color: 'text-green-500' },
+                { icon: SiExpress, name: 'Express', color: 'text-gray-600 dark:text-gray-300' },
+                { icon: SiMongodb, name: 'MongoDB', color: 'text-green-600' },
+                { icon: SiJavascript, name: 'JavaScript', color: 'text-yellow-400' },
+                { icon: SiPython, name: 'Python', color: 'text-blue-500' },
+                { icon: SiMysql, name: 'MySQL', color: 'text-blue-600' },
+                { icon: SiGit, name: 'Git', color: 'text-orange-500' },
+                { icon: SiTailwindcss, name: 'Tailwind', color: 'text-cyan-400' },
+              ].map((tech, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.4 + index * 0.05 }}
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <tech.icon className={`text-5xl ${tech.color} transition-transform group-hover:scale-110`} />
+                  <span className="text-xs font-medium text-gray-600 dark:text-gray-400">{tech.name}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Soft Skills Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mb-12"
+        >
+          <div className="flex items-center mb-6">
+            <FiUsers className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
+            <h2 className="text-3xl font-bold font-display">Soft Skills</h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              'Communication',
+              'Team Collaboration',
+              'Problem Solving',
+              'Time Management',
+              'Leadership',
+              'Adaptability',
+              'Critical Thinking',
+              'Project Coordination'
+            ].map((skill, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.05 }}
+                className="card text-center py-4 hover:shadow-lg transition-shadow"
+              >
+                <p className="font-medium text-gray-800 dark:text-gray-200">{skill}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Education Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="mb-12"
+        >
+          <div className="flex items-center mb-6">
             <FiBook className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
             <h2 className="text-3xl font-bold font-display">Education</h2>
           </div>
 
-          <div className="space-y-6">
-            {about?.education && about.education.length > 0 ? (
-              about.education.map((edu, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="card"
-                >
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      {edu.degree}
-                    </h3>
-                    <span className="text-primary-600 dark:text-primary-400 font-medium">
-                      {edu.year}
-                    </span>
-                  </div>
-                  <p className="text-gray-600 dark:text-gray-400 mb-2">
-                    {edu.institution}
-                  </p>
-                  {edu.description && (
-                    <p className="text-gray-700 dark:text-gray-300 text-sm">
-                      {edu.description}
-                    </p>
-                  )}
-                </motion.div>
-              ))
-            ) : (
-              <p className="text-gray-600 dark:text-gray-400">No education information available.</p>
-            )}
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="absolute left-[27px] top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-primary-400 to-primary-300"></div>
+
+            <div className="space-y-8">
+              {about?.education && about.education.length > 0 ? (
+                about.education.map((edu, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.8 + index * 0.1 }}
+                    className="relative flex gap-6"
+                  >
+                    {/* Timeline icon */}
+                    <div className="relative z-10 flex-shrink-0">
+                      <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 p-0.5 shadow-lg">
+                        <div className="w-full h-full rounded-xl bg-white dark:bg-gray-900 flex items-center justify-center">
+                          <FiBook className="text-2xl text-primary-600 dark:text-primary-400" />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Education card */}
+                    <div className="flex-1 card bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border-l-4 border-primary-500">
+                      <div className="flex items-start gap-4">
+                        {/* University logo */}
+                        {edu.logo && (
+                          <div className="flex-shrink-0 w-16 h-16 rounded-lg bg-white dark:bg-gray-700 p-2 shadow-md">
+                            <img
+                              src={edu.logo}
+                              alt={edu.institution}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+                        )}
+
+                        {/* Education details */}
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                            {edu.degree}
+                          </h3>
+                          <div className="flex items-center gap-2 text-primary-600 dark:text-primary-400 mb-2">
+                            <FiBook className="text-lg" />
+                            <p className="font-medium">{edu.institution}</p>
+                          </div>
+                          <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 mb-3">
+                            <FiCalendar className="text-lg" />
+                            <p className="font-medium">{edu.year}</p>
+                          </div>
+                          {edu.description && (
+                            <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                              {edu.description}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))
+              ) : (
+                <p className="text-gray-600 dark:text-gray-400">No education information available.</p>
+              )}
+            </div>
           </div>
         </motion.div>
 
@@ -107,7 +217,7 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.9 }}
           className="mb-12"
         >
           <div className="flex items-center mb-6">
@@ -173,7 +283,7 @@ const About = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
+          transition={{ delay: 1.0 }}
         >
           <div className="flex items-center mb-6">
             <FiHeart className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />

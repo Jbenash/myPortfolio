@@ -32,16 +32,25 @@ const seedData = async () => {
     await About.create({
       name: "Ben Asher",
       tagline: "Full Stack Developer | Backend Enthusiast",
-      bio: "I am a passionate developer with expertise in building dynamic web applications using React and Node.js. My journey in tech started with a curiosity for how things work, and it has evolved into a deep love for creating seamless user experiences.",
+      bio: "Enthusiastic Computer Science undergraduate seeking a Backend Developer or Full Stack Developer role to apply strong problem-solving and system-level skills. Passionate about building scalable APIs and secure backend systems using Node.js, Express, and MongoDB. Experienced in leading and contributing to full-stack projects following MVC architecture and modern software development practices. Continuous learner exploring emerging domains such as Artificial Intelligence and Cybersecurity, constantly enhancing technical knowledge to stay aligned with evolving industry trends.",
       profileImage:
         "https://myportfolio-1-5p8z.onrender.com/uploads/images/profile.jpeg",
       education: [
         {
-          degree: "Computer Science and Technology B.Sc.",
+          degree: "Bsc(Hons) in Computer Science and Technology",
           institution: "Uva Wellassa University",
-          year: "2023 - 2027",
+          year: "September 2022 - September 2026",
+          logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/uwu-logo.png",
           description:
-            "Focused on core areas such as programming, database systems, and web development. Throughout the course, I worked on several academic and personal projects that strengthened my practical knowledge of full-stack development. Gained hands-on experience in developing web applications using React.js, Next.js for the frontend and Python, PHP, Node.js using the frameworks Django, Express JS with MySQL, MongoDB for the backend. These projects helped me understand the complete development cycle, from database design to dynamic user interfaces and server-side logic. My studies and project work also deepened my interest in backend development, DevOps, and cybersecurity, motivating me to continue exploring modern technologies.",
+            "Fundamentals to Advance computer science field education.",
+        },
+        {
+          degree: "Secondary Education",
+          institution: "Jaffna Hindu College",
+          year: "January 2012 - October 2020",
+          logo: "https://myportfolio-1-5p8z.onrender.com/uploads/images/jhc-logo.png",
+          description:
+            "Secondary level education to advance level Mathematics",
         },
       ],
       courses: [

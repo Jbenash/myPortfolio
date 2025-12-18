@@ -23,9 +23,9 @@ const aboutSchema = new mongoose.Schema({
     education:
         [{
             degree: String,
-            degree: String,
             institution: String,
             year: String,
+            logo: String,
             description: String
 
         }],
