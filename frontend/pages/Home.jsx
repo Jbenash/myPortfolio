@@ -90,126 +90,66 @@ const Home = () => {
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, scale: 0.5, y: 50 }}
-            animate={{ 
-              opacity: 1, 
-              scale: 1, 
-              y: 0,
-              rotate: [0, 5, -5, 0]
-            }}
-            transition={{ 
-              duration: 0.8,
-              rotate: {
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }
-            }}
-            whileHover={{ scale: 1.1, rotate: 0 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
             className="mb-8 flex justify-center"
           >
-            <motion.div 
-              className="relative"
-              animate={{
-                y: [0, -20, 0]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
+            <div className="relative">
               <img
                 src={about?.profileImage}
                 alt={about?.name}
                 className="w-48 h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full object-cover object-top border-4 border-primary-500 dark:border-primary-600 shadow-2xl ring-4 ring-primary-100 dark:ring-primary-900/50"
                 style={{ objectPosition: "center 20%" }}
               />
-              <motion.div 
-                className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-500/20 to-transparent"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              />
-            </motion.div>
+              <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-500/20 to-transparent" />
+            </div>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold font-display mb-6"
           >
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-            >
-              Hi, I'm{" "}
-            </motion.span>
-            <motion.span 
-              className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent inline-block"
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.7, type: "spring", stiffness: 100 }}
-              whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
-            >
+            Hi, I'm{" "}
+            <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
               {about?.name}
-            </motion.span>
+            </span>
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-12 max-w-3xl mx-auto"
           >
-            <motion.span
-              initial={{ width: 0 }}
-              animate={{ width: "100%" }}
-              transition={{ duration: 1.5, delay: 1.2 }}
-              className="inline-block overflow-hidden whitespace-nowrap"
-            >
-              {about?.tagline}
-            </motion.span>
+            {about?.tagline}
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 1.6 }}
-              whileHover={{ scale: 1.1, rotate: 3 }} 
-              whileTap={{ scale: 0.9 }}
-            >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link
                 to="/contact"
-                className="btn-primary flex items-center space-x-2 shadow-xl hover:shadow-2xl"
+                className="btn-primary flex items-center space-x-2"
               >
                 <span>Get In Touch</span>
               </Link>
             </motion.div>
 
             <motion.button
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 200, delay: 1.8 }}
               onClick={handleDownload}
-              className="btn-secondary flex items-center space-x-2 shadow-xl hover:shadow-2xl"
-              whileHover={{ scale: 1.1, rotate: -3 }}
-              whileTap={{ scale: 0.9 }}
+              className="btn-secondary flex items-center space-x-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               style={{ cursor: "pointer" }}
             >
-              <motion.div
-                animate={{ y: [0, -5, 0] }}
-                transition={{ duration: 1.5, repeat: Infinity }}
-              >
-                <FiDownload />
-              </motion.div>
+              <FiDownload />
               <span>Download Resume</span>
             </motion.button>
           </motion.div>
@@ -219,31 +159,24 @@ const Home = () => {
       {/* About Section */}
       <motion.section
         id="about"
-        initial={{ opacity: 0, scale: 0.8, y: 100 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ amount: 0.3, once: false }}
-        transition={{ duration: 1, type: "spring", stiffness: 80 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.2, once: true }}
+        transition={{ duration: 0.6 }}
         className="min-h-screen flex items-center py-20 px-4 bg-white dark:bg-gray-900 snap-start snap-always"
       >
-        <motion.div 
-          className="w-full"
-          initial={{ x: -100 }}
-          whileInView={{ x: 0 }}
-          viewport={{ amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
+        <div className="w-full">
           <About />
-        </motion.div>
+        </div>
       </motion.section>
 
       {/* Projects Section */}
       <motion.section
         id="projects"
-        initial={{ opacity: 0, rotateX: 90, scale: 0.5 }}
-        whileInView={{ opacity: 1, rotateX: 0, scale: 1 }}
-        viewport={{ amount: 0.3, once: false }}
-        transition={{ duration: 1.2, type: "spring", stiffness: 60 }}
-        style={{ perspective: 1000 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.2, once: true }}
+        transition={{ duration: 0.6 }}
         className="min-h-screen flex items-center py-20 px-4 bg-gray-50 dark:bg-gray-800 snap-start snap-always"
       >
         <div className="max-w-7xl mx-auto w-full">
@@ -271,47 +204,29 @@ const Home = () => {
       {/* Skills Section */}
       <motion.section
         id="skills"
-        initial={{ opacity: 0, x: 200, scale: 0.8 }}
-        whileInView={{ opacity: 1, x: 0, scale: 1 }}
-        viewport={{ amount: 0.3, once: false }}
-        transition={{ duration: 1, type: "spring", stiffness: 80 }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.2, once: true }}
+        transition={{ duration: 0.6 }}
         className="min-h-screen flex items-center py-20 px-4 bg-white dark:bg-gray-900 snap-start snap-always"
       >
-        <motion.div 
-          className="w-full"
-          initial={{ rotate: -10, opacity: 0 }}
-          whileInView={{ rotate: 0, opacity: 1 }}
-          viewport={{ amount: 0.3 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-        >
+        <div className="w-full">
           <Skills />
-        </motion.div>
+        </div>
       </motion.section>
 
       {/* Contact Section */}
       <motion.section
         id="contact"
-        initial={{ opacity: 0, scale: 0.3, y: 200 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
-        viewport={{ amount: 0.3, once: false }}
-        transition={{ 
-          duration: 1.2, 
-          type: "spring", 
-          stiffness: 100,
-          bounce: 0.4
-        }}
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ amount: 0.2, once: true }}
+        transition={{ duration: 0.6 }}
         className="min-h-screen flex items-center py-20 px-4 bg-gray-50 dark:bg-gray-800 snap-start snap-always"
       >
-        <motion.div 
-          className="w-full"
-          initial={{ rotateY: 90 }}
-          whileInView={{ rotateY: 0 }}
-          viewport={{ amount: 0.3 }}
-          transition={{ duration: 1, delay: 0.2 }}
-          style={{ perspective: 1000 }}
-        >
+        <div className="w-full">
           <Contact />
-        </motion.div>
+        </div>
       </motion.section>
     </div>
   );
