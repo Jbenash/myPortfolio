@@ -136,6 +136,13 @@ const seedData = async () => {
         icon: "tailwind",
         order: 6,
       },
+      {
+        name: "React Native",
+        category: "frontend",
+        level: 70,
+        icon: "react",
+        order: 7,
+      },
 
       // Backend
       {
@@ -161,6 +168,34 @@ const seedData = async () => {
         order: 4,
       },
       { name: "Java", category: "backend", level: 60, icon: "java", order: 5 },
+      {
+        name: "TypeScript",
+        category: "backend",
+        level: 75,
+        icon: "typescript",
+        order: 6,
+      },
+      {
+        name: "Django",
+        category: "backend",
+        level: 65,
+        icon: "django",
+        order: 7,
+      },
+      {
+        name: "Supabase",
+        category: "backend",
+        level: 60,
+        icon: "supabase",
+        order: 8,
+      },
+      {
+        name: "Firebase",
+        category: "backend",
+        level: 65,
+        icon: "firebase",
+        order: 9,
+      },
 
       // Database
       {
@@ -177,15 +212,64 @@ const seedData = async () => {
         icon: "mysql",
         order: 2,
       },
+      {
+        name: "PostgreSQL",
+        category: "database",
+        level: 65,
+        icon: "postgresql",
+        order: 3,
+      },
+      {
+        name: "Prisma",
+        category: "database",
+        level: 60,
+        icon: "prisma",
+        order: 4,
+      },
 
       // Tools
-      { name: "Git", category: "tools", level: 80, icon: "git", order: 1 },
+      {
+        name: "Postman",
+        category: "tools",
+        level: 75,
+        icon: "postman",
+        order: 1,
+      },
+      {
+        name: "NumPy",
+        category: "tools",
+        level: 70,
+        icon: "numpy",
+        order: 2,
+      },
+      {
+        name: "Pandas",
+        category: "tools",
+        level: 70,
+        icon: "pandas",
+        order: 3,
+      },
+      {
+        name: "Scikit-learn",
+        category: "tools",
+        level: 65,
+        icon: "scikitlearn",
+        order: 4,
+      },
+      { name: "Git", category: "tools", level: 80, icon: "git", order: 5 },
+      {
+        name: "Jupyter",
+        category: "tools",
+        level: 70,
+        icon: "jupyter",
+        order: 6,
+      },
       {
         name: "VS Code",
         category: "tools",
         level: 85,
         icon: "vscode",
-        order: 2,
+        order: 7,
       },
 
       // Soft Skills
