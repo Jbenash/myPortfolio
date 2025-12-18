@@ -1,12 +1,20 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { skillsAPI } from '../services/api';
-import SkillTag from '../components/SkillTag';
 import LoadingSpinner from '../components/LoadingSpinner';
+import {
+  SiReact, SiNextdotjs, SiJavascript, SiHtml5, SiCss3, SiTailwindcss,
+  SiNodedotjs, SiExpress, SiPhp, SiPython, SiJava,
+  SiMongodb, SiMysql,
+  SiGit, SiVisualstudiocode,
+  SiBootstrap
+} from 'react-icons/si';
+import { FiCode } from 'react-icons/fi';
 
 const Skills = () => {
   const [skills, setSkills] = useState({ grouped: {} });
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState('frontend');
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -25,22 +33,34 @@ const Skills = () => {
   }, []);
 
   const categoryTitles = {
-    frontend: 'Frontend Development',
-    backend: 'Backend Development',
-    database: 'Databases',
-    tools: 'Tools & Technologies',
-    'soft-skills': 'Soft Skills',
+    frontend: 'Frontend',
+    backend: 'Backend',
+    database: 'Database',
+    tools: 'Other',
   };
 
-  const categoryIcons = {
-    frontend: '🎨',
-    backend: '⚙️',
-    database: '🗄️',
-    tools: '🛠️',
-    'soft-skills': '💡',
+  const skillIcons = {
+    'React.js': { icon: SiReact, color: '#61DAFB' },
+    'Next.js': { icon: SiNextdotjs, color: '#000000' },
+    'JavaScript': { icon: SiJavascript, color: '#F7DF1E' },
+    'HTML5': { icon: SiHtml5, color: '#E34F26' },
+    'CSS3': { icon: SiCss3, color: '#1572B6' },
+    'Tailwind CSS': { icon: SiTailwindcss, color: '#06B6D4' },
+    'Bootstrap': { icon: SiBootstrap, color: '#7952B3' },
+    'Node.js': { icon: SiNodedotjs, color: '#339933' },
+    'Express.js': { icon: SiExpress, color: '#000000' },
+    'PHP': { icon: SiPhp, color: '#777BB4' },
+    'Python': { icon: SiPython, color: '#3776AB' },
+    'Java': { icon: SiJava, color: '#007396' },
+    'MongoDB': { icon: SiMongodb, color: '#47A248' },
+    'MySQL': { icon: SiMysql, color: '#4479A1' },
+    'Git': { icon: SiGit, color: '#F05032' },
+    'VS Code': { icon: SiVisualstudiocode, color: '#007ACC' },
   };
 
   if (loading) return <LoadingSpinner />;
+
+  const tabs = Object.keys(skills.grouped).filter(cat => ['frontend', 'backend', 'database', 'tools'].includes(cat));
 
   return (
     <div className="min-h-screen pt-24 pb-20 px-4">
@@ -57,47 +77,54 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Skills by Category */}
-        <div className="space-y-12">
-          {Object.entries(skills.grouped).map(([category, categorySkills], categoryIndex) => (
-            <motion.div
+        {/* Tabs */}
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
+          {tabs.map((category) => (
+            <button
               key={category}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: categoryIndex * 0.1 }}
+              onClick={() => setActiveTab(category)}
+              className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${
+                activeTab === category
+                  ? 'bg-primary-500 text-white shadow-lg scale-105'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+              }`}
             >
-              <div className="flex items-center mb-6">
-                <span className="text-4xl mr-3">{categoryIcons[category]}</span>
-                <h2 className="text-3xl font-bold font-display">
-                  {categoryTitles[category]}
-                </h2>
-              </div>
-
-              <div className="card">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {categorySkills.map((skill, index) => (
-                    <SkillTag key={skill._id} skill={skill} index={index} />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+              {categoryTitles[category]}
+            </button>
           ))}
         </div>
 
-        {/* Skills Summary */}
+        {/* Skills Grid */}
         <motion.div
+          key={activeTab}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-16 text-center"
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
         >
-          <div className="card bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/20 dark:to-primary-800/20">
-            <h3 className="text-2xl font-bold mb-4">Always Learning</h3>
-            <p className="text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
-              I believe in continuous learning and staying updated with the latest technologies. 
-              These skills represent my current expertise, but I'm always eager to learn more!
-            </p>
-          </div>
+          {skills.grouped[activeTab]?.map((skill, index) => {
+            const iconInfo = skillIcons[skill.name] || { icon: FiCode, color: '#6B7280' };
+            const IconComponent = iconInfo.icon;
+
+            return (
+              <motion.div
+                key={skill._id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                whileHover={{ scale: 1.05 }}
+                className="flex flex-col items-center justify-center p-8 rounded-2xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300"
+              >
+                <IconComponent
+                  className="w-16 h-16 mb-4"
+                  style={{ color: iconInfo.color }}
+                />
+                <span className="text-sm font-medium text-gray-900 dark:text-white text-center">
+                  {skill.name}
+                </span>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </div>
