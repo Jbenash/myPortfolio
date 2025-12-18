@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { skillsAPI } from "../services/api";
+import { skillsAPI, aboutAPI } from "../services/api";
 import LoadingSpinner from "../components/LoadingSpinner";
 import {
   SiReact,
@@ -31,27 +31,32 @@ import {
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { VscCode } from "react-icons/vsc";
-import { FiCode } from "react-icons/fi";
+import { FiCode, FiTool, FiUsers, FiServer } from "react-icons/fi";
 
 const Skills = () => {
   const [skills, setSkills] = useState({ grouped: {} });
+  const [about, setAbout] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("frontend");
 
   useEffect(() => {
-    const fetchSkills = async () => {
+    const fetchData = async () => {
       try {
-        const response = await skillsAPI.getSkills();
-        setSkills(response.data);
+        const [skillsResponse, aboutResponse] = await Promise.all([
+          skillsAPI.getSkills(),
+          aboutAPI.getAbout(),
+        ]);
+        setSkills(skillsResponse.data);
+        setAbout(aboutResponse.data.data);
       } catch (error) {
-        console.error("Error fetching skills:", error);
+        console.error("Error fetching data:", error);
         setSkills({ grouped: {} });
       } finally {
         setLoading(false);
       }
     };
 
-    fetchSkills();
+    fetchData();
   }, []);
 
   const categoryTitles = {
@@ -117,11 +122,10 @@ const Skills = () => {
             <button
               key={category}
               onClick={() => setActiveTab(category)}
-              className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${
-                activeTab === category
-                  ? "bg-primary-500 text-white shadow-lg scale-105"
-                  : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
-              }`}
+              className={`px-8 py-3 rounded-full font-medium transition-all duration-300 ${activeTab === category
+                ? "bg-primary-500 text-white shadow-lg scale-105"
+                : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600"
+                }`}
             >
               {categoryTitles[category]}
             </button>
@@ -162,6 +166,97 @@ const Skills = () => {
               </motion.div>
             );
           })}
+        </motion.div>
+
+        {/* Technical Skills Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mt-16"
+        >
+          <div className="flex items-center justify-center mb-8">
+            <FiTool className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
+            <h2 className="text-3xl font-bold font-display">
+              Technical Skills
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {about?.technicalSkills && about.technicalSkills.length > 0 ? (
+              about.technicalSkills.map((skill, index) => {
+                const iconMap = {
+                  SiReact,
+                  SiNodedotjs,
+                  SiExpress,
+                  SiMongodb,
+                  SiJavascript,
+                  SiTypescript,
+                  SiPython,
+                  SiMysql,
+                  SiGit,
+                  SiTailwindcss,
+                  FiServer,
+                };
+                const IconComponent = iconMap[skill.icon] || FiTool;
+
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.6 + index * 0.03 }}
+                    className="card flex flex-col items-center justify-center p-4 hover:shadow-lg hover:scale-105 transition-all group"
+                  >
+                    <IconComponent className="text-4xl text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform" />
+                    <p className="text-sm font-semibold text-gray-900 dark:text-white text-center">
+                      {skill.name}
+                    </p>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                      {skill.category}
+                    </span>
+                  </motion.div>
+                );
+              })
+            ) : (
+              <p className="text-gray-600 dark:text-gray-400 col-span-full text-center">
+                No technical skills information available.
+              </p>
+            )}
+          </div>
+        </motion.div>
+
+        {/* Soft Skills Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7 }}
+          className="mt-16"
+        >
+          <div className="flex items-center justify-center mb-8">
+            <FiUsers className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
+            <h2 className="text-3xl font-bold font-display">Soft Skills</h2>
+          </div>
+
+          <div className="flex flex-wrap gap-3 justify-center">
+            {about?.softSkills && about.softSkills.length > 0 ? (
+              about.softSkills.map((skill, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.8 + index * 0.05 }}
+                  className="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-gray-900 dark:text-white rounded-lg font-medium shadow hover:shadow-lg hover:scale-105 transition-all"
+                >
+                  {skill}
+                </motion.span>
+              ))
+            ) : (
+              <p className="text-gray-600 dark:text-gray-400">
+                No soft skills information available.
+              </p>
+            )}
+          </div>
         </motion.div>
       </div>
     </div>

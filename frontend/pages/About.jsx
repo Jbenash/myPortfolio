@@ -1,10 +1,15 @@
-import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { FiBook, FiAward, FiHeart, FiEye, FiDownload, FiServer, FiUsers, FiTool } from 'react-icons/fi';
-import { SiReact, SiNodedotjs, SiExpress, SiMongodb, SiJavascript, SiTypescript, SiPython, SiMysql, SiGit, SiJsonwebtokens, SiTailwindcss } from 'react-icons/si';
-import { aboutAPI } from '../services/api';
-import LoadingSpinner from '../components/LoadingSpinner';
-import CertificateModal from '../components/CertificateModal';
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  FiBook,
+  FiAward,
+  FiHeart,
+  FiEye,
+  FiDownload,
+} from "react-icons/fi";
+import { aboutAPI } from "../services/api";
+import LoadingSpinner from "../components/LoadingSpinner";
+import CertificateModal from "../components/CertificateModal";
 
 const About = () => {
   const [about, setAbout] = useState(null);
@@ -17,8 +22,7 @@ const About = () => {
         const response = await aboutAPI.getAbout();
         setAbout(response.data.data);
       } catch (error) {
-        console.error('Error fetching about data:', error);
-
+        console.error("Error fetching about data:", error);
       } finally {
         setLoading(false);
       }
@@ -87,8 +91,8 @@ const About = () => {
                     {/* Timeline Icon with Logo */}
                     <div className="absolute left-0 w-16 h-16 rounded-xl bg-white dark:bg-gray-800 shadow-lg border-4 border-primary-500 dark:border-primary-400 flex items-center justify-center overflow-hidden">
                       {edu.logo ? (
-                        <img 
-                          src={edu.logo} 
+                        <img
+                          src={edu.logo}
                           alt={edu.institution}
                           className="w-12 h-12 object-contain"
                         />
@@ -108,8 +112,18 @@ const About = () => {
                         </p>
                       </div>
                       <div className="flex items-center gap-2 mb-3">
-                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        <svg
+                          className="w-4 h-4 text-gray-500 dark:text-gray-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
                         </svg>
                         <span className="text-sm text-gray-600 dark:text-gray-400 font-medium">
                           {edu.year}
@@ -124,86 +138,11 @@ const About = () => {
                   </motion.div>
                 ))
               ) : (
-                <p className="text-gray-600 dark:text-gray-400 pl-20">No education information available.</p>
+                <p className="text-gray-600 dark:text-gray-400 pl-20">
+                  No education information available.
+                </p>
               )}
             </div>
-          </div>
-        </motion.div>
-
-        {/* Technical Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mb-12"
-        >
-          <div className="flex items-center mb-8">
-            <FiTool className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
-            <h2 className="text-3xl font-bold font-display">Technical Skills</h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {about?.technicalSkills && about.technicalSkills.length > 0 ? (
-              about.technicalSkills.map((skill, index) => {
-                const iconMap = {
-                  SiReact, SiNodedotjs, SiExpress, SiMongodb, SiJavascript,
-                  SiTypescript, SiPython, SiMysql, SiGit, SiJsonwebtokens,
-                  SiTailwindcss, FiServer
-                };
-                const IconComponent = iconMap[skill.icon] || FiTool;
-
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.03 }}
-                    className="card flex flex-col items-center justify-center p-4 hover:shadow-lg hover:scale-105 transition-all group"
-                  >
-                    <IconComponent className="text-4xl text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform" />
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white text-center">
-                      {skill.name}
-                    </p>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      {skill.category}
-                    </span>
-                  </motion.div>
-                );
-              })
-            ) : (
-              <p className="text-gray-600 dark:text-gray-400 col-span-full">No technical skills information available.</p>
-            )}
-          </div>
-        </motion.div>
-
-        {/* Soft Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="mb-12"
-        >
-          <div className="flex items-center mb-8">
-            <FiUsers className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
-            <h2 className="text-3xl font-bold font-display">Soft Skills</h2>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            {about?.softSkills && about.softSkills.length > 0 ? (
-              about.softSkills.map((skill, index) => (
-                <motion.span
-                  key={index}
-                  initial={{ opacity: 0, scale: 0 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.05 }}
-                  className="px-6 py-3 bg-white dark:bg-gray-800 border-2 border-primary-500 dark:border-primary-400 text-gray-900 dark:text-white rounded-lg font-medium shadow hover:shadow-lg hover:scale-105 transition-all"
-                >
-                  {skill}
-                </motion.span>
-              ))
-            ) : (
-              <p className="text-gray-600 dark:text-gray-400">No soft skills information available.</p>
-            )}
           </div>
         </motion.div>
 
@@ -216,7 +155,9 @@ const About = () => {
         >
           <div className="flex items-center mb-6">
             <FiAward className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
-            <h2 className="text-3xl font-bold font-display">Courses & Certifications</h2>
+            <h2 className="text-3xl font-bold font-display">
+              Courses & Certifications
+            </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -254,7 +195,7 @@ const About = () => {
                   )}
 
                   {/* Certificate Info */}
-                  <div className={course.image ? '' : 'pt-0'}>
+                  <div className={course.image ? "" : "pt-0"}>
                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                       {course.name}
                     </h3>
@@ -268,7 +209,9 @@ const About = () => {
                 </motion.div>
               ))
             ) : (
-              <p className="text-gray-600 dark:text-gray-400">No courses information available.</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                No courses information available.
+              </p>
             )}
           </div>
         </motion.div>
@@ -298,7 +241,9 @@ const About = () => {
                 </motion.span>
               ))
             ) : (
-              <p className="text-gray-600 dark:text-gray-400">No interests information available.</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                No interests information available.
+              </p>
             )}
           </div>
         </motion.div>
