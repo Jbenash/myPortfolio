@@ -36,7 +36,7 @@ const seedData = async () => {
                 name: 'Ben Asher',
                 tagline: 'Full Stack Developer | Backend Enthusiast',
                 bio: 'I am a passionate developer with expertise in building dynamic web applications using React and Node.js. My journey in tech started with a curiosity for how things work, and it has evolved into a deep love for creating seamless user experiences.',
-                profileImage: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/profile.jpg',
+                profileImage: 'https://myportfolio-1-5p8z.onrender.com/uploads/images/profile.jpeg',
                 education: [
                     {
                         degree: 'Computer Science and Technology B.Sc.',
