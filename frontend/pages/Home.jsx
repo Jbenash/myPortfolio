@@ -59,9 +59,9 @@ const Home = () => {
     if (loading) return <LoadingSpinner />;
 
     return (
-        <div className="min-h-screen pt-16">
+        <div className="scroll-smooth">
             {/* Hero Section */}
-            <section className="relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
+            <section className="relative h-screen flex items-center justify-center px-4 overflow-hidden snap-start snap-always">
                 {/* Background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800" />
 
@@ -155,17 +155,34 @@ const Home = () => {
             </section>
 
             {/* About Section */}
-            <section id="about" className="py-20 px-4 bg-white dark:bg-gray-900">
-                <About />
-            </section>
+            <motion.section
+                id="about"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="min-h-screen flex items-center py-20 px-4 bg-white dark:bg-gray-900 snap-start snap-always"
+            >
+                <div className="w-full">
+                    <About />
+                </div>
+            </motion.section>
 
             {/* Projects Section */}
-            <section id="projects" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-                <div className="max-w-7xl mx-auto">
+            <motion.section
+                id="projects"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="min-h-screen flex items-center py-20 px-4 bg-gray-50 dark:bg-gray-800 snap-start snap-always"
+            >
+                <div className="max-w-7xl mx-auto w-full">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
                         <h2 className="section-title">My Projects</h2>
@@ -180,17 +197,35 @@ const Home = () => {
                         ))}
                     </div>
                 </div>
-            </section>
+            </motion.section>
 
             {/* Skills Section */}
-            <section id="skills" className="py-20 px-4 bg-white dark:bg-gray-900">
-                <Skills />
-            </section>
+            <motion.section
+                id="skills"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="min-h-screen flex items-center py-20 px-4 bg-white dark:bg-gray-900 snap-start snap-always"
+            >
+                <div className="w-full">
+                    <Skills />
+                </div>
+            </motion.section>
 
             {/* Contact Section */}
-            <section id="contact" className="py-20 px-4 bg-gray-50 dark:bg-gray-800">
-                <Contact />
-            </section>
+            <motion.section
+                id="contact"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ amount: 0.3 }}
+                transition={{ duration: 0.8 }}
+                className="min-h-screen flex items-center py-20 px-4 bg-gray-50 dark:bg-gray-800 snap-start snap-always"
+            >
+                <div className="w-full">
+                    <Contact />
+                </div>
+            </motion.section>
         </div>
     );
 };

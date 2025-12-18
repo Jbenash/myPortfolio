@@ -5,9 +5,15 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+  }
+
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
     @apply transition-colors duration-300;
+    overflow-x: hidden;
   }
 }
 
