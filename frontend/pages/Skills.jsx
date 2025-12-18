@@ -112,7 +112,7 @@ const Skills = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="section-title">My Skills</h1>
+          <h1 className="section-title">Technical Skills</h1>
           <p className="section-subtitle">Technologies and tools I work with</p>
         </motion.div>
 
@@ -166,64 +166,6 @@ const Skills = () => {
               </motion.div>
             );
           })}
-        </motion.div>
-
-        {/* Technical Skills Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="mt-16"
-        >
-          <div className="flex items-center justify-center mb-8">
-            <FiTool className="text-3xl text-primary-600 dark:text-primary-400 mr-3" />
-            <h2 className="text-3xl font-bold font-display">
-              Technical Skills
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {about?.technicalSkills && about.technicalSkills.length > 0 ? (
-              about.technicalSkills.map((skill, index) => {
-                const iconMap = {
-                  SiReact,
-                  SiNodedotjs,
-                  SiExpress,
-                  SiMongodb,
-                  SiJavascript,
-                  SiTypescript,
-                  SiPython,
-                  SiMysql,
-                  SiGit,
-                  SiTailwindcss,
-                  FiServer,
-                };
-                const IconComponent = iconMap[skill.icon] || FiTool;
-
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.03 }}
-                    className="card flex flex-col items-center justify-center p-4 hover:shadow-lg hover:scale-105 transition-all group"
-                  >
-                    <IconComponent className="text-4xl text-primary-600 dark:text-primary-400 mb-2 group-hover:scale-110 transition-transform" />
-                    <p className="text-sm font-semibold text-gray-900 dark:text-white text-center">
-                      {skill.name}
-                    </p>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 mt-1">
-                      {skill.category}
-                    </span>
-                  </motion.div>
-                );
-              })
-            ) : (
-              <p className="text-gray-600 dark:text-gray-400 col-span-full text-center">
-                No technical skills information available.
-              </p>
-            )}
-          </div>
         </motion.div>
 
         {/* Soft Skills Section */}
