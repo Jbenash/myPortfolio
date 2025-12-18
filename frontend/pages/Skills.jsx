@@ -16,10 +16,10 @@ import {
   SiMongodb,
   SiMysql,
   SiGit,
-  SiVisualstudio,
   SiBootstrap,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
+import { VscCode } from "react-icons/vsc";
 import { FiCode } from "react-icons/fi";
 
 const Skills = () => {
@@ -66,7 +66,7 @@ const Skills = () => {
     MongoDB: { icon: SiMongodb, color: "#47A248" },
     MySQL: { icon: SiMysql, color: "#4479A1" },
     Git: { icon: SiGit, color: "#F05032" },
-    "VS Code": { icon: SiVisualstudio, color: "#007ACC" },
+    "VS Code": { icon: VscCode, color: "#007ACC" },
   };
 
   if (loading) return <LoadingSpinner />;
