@@ -94,8 +94,8 @@ const Skills = () => {
 
   if (loading) return <LoadingSpinner />;
 
-  const tabs = Object.keys(skills.grouped).filter((cat) =>
-    ["frontend", "backend", "database", "tools"].includes(cat)
+  const tabs = ["frontend", "backend", "database", "tools"].filter((cat) =>
+    skills.grouped[cat]
   );
 
   return (

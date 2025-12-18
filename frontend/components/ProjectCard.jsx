@@ -55,80 +55,86 @@ const ProjectCard = ({ project, index }) => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="card group"
+      className="bg-gray-900 dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col"
     >
       {/* Project Image */}
-      <div className="relative overflow-hidden rounded-lg mb-4 h-48 bg-gray-200 dark:bg-gray-700">
+      <div className="relative overflow-hidden h-64 bg-gray-800">
         <img
           src={project.screenshot}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full">
+          <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+            {project.title}
+          </h3>
+        </div>
       </div>
 
-      {/* Project Info */}
-      <div className="space-y-3">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">
+      {/* Project Content */}
+      <div className="p-6 flex-grow flex flex-col">
+        <h2 className="text-2xl font-bold text-white mb-3">
           {project.title}
-        </h3>
+        </h2>
 
-        <p className="text-gray-600 dark:text-gray-400 text-sm line-clamp-3">
+        <p className="text-gray-400 text-sm mb-6 flex-grow">
           {project.description}
         </p>
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-3 items-center">
-          {project.technologies.map((tech, i) => {
-            // Normalize the tech name for lookup
-            const normalizedTech = tech.trim();
-            const techInfo = techIcons[normalizedTech];
+        {/* Technologies Used Label */}
+        <div className="mb-4">
+          <p className="text-gray-500 text-xs uppercase tracking-wider font-semibold mb-3">
+            Technologies Used
+          </p>
+          
+          {/* Technology Badges */}
+          <div className="flex flex-wrap gap-3">
+            {project.technologies.map((tech, i) => {
+              const normalizedTech = tech.trim();
+              const techInfo = techIcons[normalizedTech];
 
-            if (techInfo) {
-              const IconComponent = techInfo.icon;
+              if (techInfo) {
+                const IconComponent = techInfo.icon;
+                return (
+                  <div
+                    key={i}
+                    className="bg-gray-800 dark:bg-gray-700 px-3 py-2 rounded-lg flex items-center gap-2 hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+                  >
+                    <IconComponent
+                      className="w-5 h-5"
+                      style={{ color: techInfo.color }}
+                    />
+                    <span className="text-gray-300 text-xs font-medium">
+                      {tech}
+                    </span>
+                  </div>
+                );
+              }
               return (
-                <motion.div
+                <span
                   key={i}
-                  whileHover={{ scale: 1.15, y: -3 }}
-                  className="relative group/tech"
-                  title={tech}
+                  className="bg-gray-800 dark:bg-gray-700 px-3 py-2 rounded-lg text-gray-300 text-xs font-medium"
                 >
-                  <IconComponent
-                    className="w-7 h-7 transition-all"
-                    style={{ color: techInfo.color }}
-                  />
-                  {/* Tooltip */}
-                  <span className="absolute -top-9 left-1/2 transform -translate-x-1/2 px-2 py-1 bg-gray-900 dark:bg-gray-700 text-white text-xs rounded shadow-lg opacity-0 group-hover/tech:opacity-100 transition-opacity whitespace-nowrap pointer-events-none z-10">
-                    {tech}
-                  </span>
-                </motion.div>
+                  {tech}
+                </span>
               );
-            }
-            // Fallback to text badge if icon not found
-            return (
-              <span
-                key={i}
-                className="px-3 py-1 text-xs font-medium bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-full"
-              >
-                {tech}
-              </span>
-            );
-          })}
+            })}
+          </div>
         </div>
 
-        {/* Links */}
-        <div className="flex space-x-4 pt-4">
+        {/* Action Buttons */}
+        <div className="flex gap-3 pt-4 border-t border-gray-800">
           {project.githubLink && (
             <motion.a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg font-medium transition-colors"
             >
-              <FiGithub />
-              <span>Code</span>
+              <FiGithub className="w-5 h-5" />
+              <span>View on GitHub</span>
             </motion.a>
           )}
           {project.demoLink && (
@@ -136,12 +142,12 @@ const ProjectCard = ({ project, index }) => {
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-white hover:bg-gray-100 text-gray-900 rounded-lg font-medium transition-colors"
             >
-              <FiExternalLink />
-              <span>Demo</span>
+              <FiExternalLink className="w-5 h-5" />
+              <span>View Project</span>
             </motion.a>
           )}
         </div>
