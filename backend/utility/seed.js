@@ -246,6 +246,20 @@ const seedData = async () => {
         icon: "firebase",
         order: 9,
       },
+      {
+        name: "Hibernate",
+        category: "backend",
+        level: 55,
+        icon: "hibernate",
+        order: 10,
+      },
+      {
+        name: "Neon",
+        category: "backend",
+        level: 60,
+        icon: "neon",
+        order: 11,
+      },
 
       // Database
       {
@@ -275,6 +289,13 @@ const seedData = async () => {
         level: 60,
         icon: "prisma",
         order: 4,
+      },
+      {
+        name: "Mongoose",
+        category: "database",
+        level: 80,
+        icon: "mongoose",
+        order: 5,
       },
 
       // Tools

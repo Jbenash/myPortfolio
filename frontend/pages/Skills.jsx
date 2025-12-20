@@ -28,6 +28,8 @@ import {
   SiPandas,
   SiScikitlearn,
   SiJupyter,
+  SiHibernate,
+  SiMongoose,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { VscCode } from "react-icons/vsc";
@@ -88,6 +90,9 @@ const Skills = () => {
     MySQL: { icon: SiMysql, color: "#4479A1" },
     PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
     Prisma: { icon: SiPrisma, color: "#2D3748" },
+    Hibernate: { icon: SiHibernate, color: "#59666C" },
+    Neon: { icon: FiServer, color: "#00E699" },
+    Mongoose: { icon: SiMongoose, color: "#880000" },
     Postman: { icon: SiPostman, color: "#FF6C37" },
     NumPy: { icon: SiNumpy, color: "#013243" },
     Pandas: { icon: SiPandas, color: "#150458" },
