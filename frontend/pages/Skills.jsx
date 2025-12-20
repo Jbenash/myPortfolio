@@ -30,6 +30,8 @@ import {
   SiJupyter,
   SiHibernate,
   SiMongoose,
+  SiNestjs,
+  SiSpringboot,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { VscCode } from "react-icons/vsc";
@@ -93,6 +95,8 @@ const Skills = () => {
     Hibernate: { icon: SiHibernate, color: "#59666C" },
     Neon: { icon: FiServer, color: "#00E699" },
     Mongoose: { icon: SiMongoose, color: "#880000" },
+    NestJS: { icon: SiNestjs, color: "#E0234E" },
+    "Spring Boot": { icon: SiSpringboot, color: "#6DB33F" },
     Postman: { icon: SiPostman, color: "#FF6C37" },
     NumPy: { icon: SiNumpy, color: "#013243" },
     Pandas: { icon: SiPandas, color: "#150458" },

@@ -260,6 +260,20 @@ const seedData = async () => {
         icon: "neon",
         order: 11,
       },
+      {
+        name: "NestJS",
+        category: "backend",
+        level: 70,
+        icon: "nestjs",
+        order: 12,
+      },
+      {
+        name: "Spring Boot",
+        category: "backend",
+        level: 55,
+        icon: "springboot",
+        order: 13,
+      },
 
       // Database
       {
