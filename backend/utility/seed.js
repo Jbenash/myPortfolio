@@ -226,46 +226,39 @@ const seedData = async () => {
         order: 6,
       },
       {
-        name: "Hibernate",
-        category: "backend",
-        level: 55,
-        icon: "hibernate",
-        order: 7,
-      },
-      {
         name: "Python",
         category: "backend",
         level: 60,
         icon: "python",
-        order: 8,
+        order: 7,
       },
       {
         name: "Django",
         category: "backend",
         level: 65,
         icon: "django",
-        order: 9,
+        order: 8,
       },
       {
         name: "Supabase",
         category: "backend",
         level: 60,
         icon: "supabase",
-        order: 10,
+        order: 9,
       },
       {
         name: "Firebase",
         category: "backend",
         level: 65,
         icon: "firebase",
-        order: 11,
+        order: 10,
       },
       {
         name: "Neon",
         category: "backend",
         level: 60,
         icon: "neon",
-        order: 12,
+        order: 11,
       },
 
       // Database
@@ -303,6 +296,13 @@ const seedData = async () => {
         level: 60,
         icon: "prisma",
         order: 5,
+      },
+      {
+        name: "Hibernate",
+        category: "database",
+        level: 55,
+        icon: "hibernate",
+        order: 6,
       },
 
       // Tools
@@ -348,6 +348,34 @@ const seedData = async () => {
         level: 85,
         icon: "vscode",
         order: 7,
+      },
+      {
+        name: "Cloudinary",
+        category: "tools",
+        level: 70,
+        icon: "cloudinary",
+        order: 8,
+      },
+      {
+        name: "Vercel",
+        category: "tools",
+        level: 75,
+        icon: "vercel",
+        order: 9,
+      },
+      {
+        name: "Railway",
+        category: "tools",
+        level: 65,
+        icon: "railway",
+        order: 10,
+      },
+      {
+        name: "Render",
+        category: "tools",
+        level: 70,
+        icon: "render",
+        order: 11,
       },
 
       // Soft Skills

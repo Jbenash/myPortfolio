@@ -32,6 +32,10 @@ import {
   SiMongoose,
   SiNestjs,
   SiSpringboot,
+  SiCloudinary,
+  SiVercel,
+  SiRailway,
+  SiRender,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { VscCode } from "react-icons/vsc";
@@ -104,6 +108,10 @@ const Skills = () => {
     Git: { icon: SiGit, color: "#F05032" },
     Jupyter: { icon: SiJupyter, color: "#F37626" },
     "VS Code": { icon: VscCode, color: "#007ACC" },
+    Cloudinary: { icon: SiCloudinary, color: "#3448C5" },
+    Vercel: { icon: SiVercel, color: "#000000" },
+    Railway: { icon: SiRailway, color: "#0B0D0E" },
+    Render: { icon: SiRender, color: "#46E3B7" },
   };
 
   if (loading) return <LoadingSpinner />;
