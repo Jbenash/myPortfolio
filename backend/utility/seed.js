@@ -124,7 +124,7 @@ const seedData = async () => {
           "Cloudinary",
         ],
         githubLink: "https://github.com/Jbenash/E-Commerce-App",
-        demoLink: "https://shopify-demo.onrender.com", // Placeholder
+        demoLink: "https://e-commerce-app-frontend-tau.vercel.app/",
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/E-Commerce.png",
         featured: true,
