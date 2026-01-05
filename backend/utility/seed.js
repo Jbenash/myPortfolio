@@ -122,9 +122,10 @@ const seedData = async () => {
           "ExpressJS",
           "JWT",
           "Cloudinary",
+          "Tailwind CSS",
         ],
         githubLink: "https://github.com/Jbenash/E-Commerce-App",
-        demoLink: "https://e-commerce-app-frontend-tau.vercel.app/",
+        demoLink: "https://shopify-demo.onrender.com", // Placeholder
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/E-Commerce.png",
         featured: true,
