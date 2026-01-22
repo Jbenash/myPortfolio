@@ -150,6 +150,25 @@ const seedData = async () => {
         featured: true,
         order: 3,
       },
+      {
+        title: "CareConnect - Digital Healthcare Platform",
+        description:
+          "CareConnect is a comprehensive digital healthcare platform designed to streamline operations for community clinics. It bridges the gap between healthcare providers and patients by facilitating online appointments, patient record management, and administrative oversight.",
+        technologies: [
+          "React",
+          "NodeJS",
+          "MongoDB",
+          "ExpressJS",
+          "Tailwind CSS",
+          "JWT",
+        ],
+        githubLink: "https://github.com/Sivatheevan1224/Care_Connect",
+        demoLink: "https://care-connect-swart.vercel.app/",
+        screenshot:
+          "https://myportfolio-1-5p8z.onrender.com/uploads/images/careConnect.png",
+        featured: true,
+        order: 4,
+      },
     ]);
     await Skills.create([
       {
