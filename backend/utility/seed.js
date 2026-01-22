@@ -165,7 +165,7 @@ const seedData = async () => {
         githubLink: "https://github.com/Sivatheevan1224/Care_Connect",
         demoLink: "https://care-connect-swart.vercel.app/",
         screenshot:
-          "https://myportfolio-1-5p8z.onrender.com/uploads/images/careConnect.png",
+          "https://myportfolio-1-5p8z.onrender.com/uploads/images/CareConnect.png",
         featured: true,
         order: 4,
       },
