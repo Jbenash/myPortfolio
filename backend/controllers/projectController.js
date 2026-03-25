@@ -2,7 +2,7 @@ import Project from "../model/Project.js";
 
 export const getProjects = async (req, res) => {
     try {
-        const projects = await Project.find().sort({ order: 1, createdAt: -1 })
+        const projects = await Project.find().sort({ updatedAt: -1, createdAt: -1 })
 
 
         res.json({
