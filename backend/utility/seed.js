@@ -169,6 +169,18 @@ const seedData = async () => {
         featured: true,
         order: 4,
       },
+      {
+        title: "Class Allocation System",
+        description:
+          "A class allocation system for managing classroom assignments and scheduling workflows with a modern web interface and efficient data handling.",
+        technologies: ["Django", "React", "MySQL"],
+        githubLink: "https://github.com/sjana24/apt_backend.git",
+        demoLink:
+          "https://www.linkedin.com/posts/ben-asher-78a638275_happy-to-showcase-a-project-my-team-and-i-activity-7442429898977292289-LNFk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMxBVoBvUXeoxyRk_ulSL1iEvw_Xn3q1Iw",
+        screenshot: "/uploads/images/class_allocation_system.png",
+        featured: true,
+        order: 5,
+      },
     ]);
     await Skills.create([
       {

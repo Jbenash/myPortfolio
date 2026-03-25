@@ -49,6 +49,12 @@ const techIcons = {
 };
 
 const ProjectCard = ({ project, index }) => {
+  const apiUrl = import.meta.env.VITE_API_URL || "";
+  const backendBaseUrl = apiUrl.replace(/\/api\/?$/, "");
+  const screenshotSrc = project.screenshot?.startsWith("http")
+    ? project.screenshot
+    : `${backendBaseUrl}${project.screenshot?.startsWith("/") ? "" : "/"}${project.screenshot || ""}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -60,7 +66,7 @@ const ProjectCard = ({ project, index }) => {
       {/* Project Image */}
       <div className="relative overflow-hidden h-64 bg-gray-800">
         <img
-          src={project.screenshot}
+          src={screenshotSrc}
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
         />
