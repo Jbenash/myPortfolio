@@ -92,6 +92,7 @@ const seedData = async () => {
         "Backend Development",
         "Network Security",
         "Automation Tools",
+        "Cloud Computing",
       ],
 
       CV: "https://myportfolio-1-5p8z.onrender.com/api/download/resume",
@@ -147,7 +148,7 @@ const seedData = async () => {
         demoLink: "https://my-portfolio-oql4.vercel.app/",
         screenshot:
           "https://myportfolio-1-5p8z.onrender.com/uploads/images/portfolio_project.png",
-        featured: true,
+        featured: false,
         order: 3,
       },
       {
@@ -181,6 +182,29 @@ const seedData = async () => {
         featured: true,
         order: 5,
       },
+     {
+  title: "Fitness Tracking System",
+  description:
+    "A fitness tracking system designed for individual users to monitor their daily fitness activities and receive personalized AI-driven recommendations powered by Google Gemini. Built with a scalable microservices architecture, the system ensures secure authentication, efficient communication between services, and real-time data handling.",
+  technologies: [
+    "Spring Boot",
+    "React",
+    "Redux",
+    "Keycloak",
+    "OAuth2",
+    "RabbitMQ",
+    "Docker",
+    "Postman",
+    "Netflix Eureka",
+    "Google Gemini API"
+  ],
+  githubLink: "https://github.com/Jbenash/Fitness_Tracker_backend.git",
+  demoLink:
+    "https://www.linkedin.com/posts/ben-asher-78a638275_softwareengineering-backenddevelopment-microservices-activity-7454441773990551552-D33D?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMxBVoBvUXeoxyRk_ulSL1iEvw_Xn3q1Iw",
+  screenshot: "/uploads/images/Fitness_tracker.png",
+  featured: true,
+  order: 6,
+}
     ]);
     await Skills.create([
       {
