@@ -23,7 +23,7 @@ import {
   SiDocker,
   SiPostman,
   SiNetflix,
-  SiFramermotion,
+  SiFramer,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { RiKey2Fill } from "react-icons/ri";
@@ -61,7 +61,7 @@ const techIcons = {
   Docker: { icon: SiDocker, color: "#2496ED" },
   Postman: { icon: SiPostman, color: "#FF6C37" },
   "Netflix Eureka": { icon: SiNetflix, color: "#E50914" },
-  "Framer Motion": { icon: SiFramermotion, color: "#0055FF" },
+  "Framer Motion": { icon: SiFramer, color: "#0055FF" },
 };
 
 const ProjectCard = ({ project, index }) => {
