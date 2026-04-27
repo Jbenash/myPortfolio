@@ -16,6 +16,14 @@ import {
   SiTypescript,
   SiPostgresql,
   SiRedis,
+  SiSpringboot,
+  SiRedux,
+  SiKeycloak,
+  SiRabbitmq,
+  SiDocker,
+  SiPostman,
+  SiNetflix,
+  SiFramermotion,
 } from "react-icons/si";
 import { DiJava } from "react-icons/di";
 import { RiKey2Fill } from "react-icons/ri";
@@ -46,6 +54,14 @@ const techIcons = {
   PostgreSQL: { icon: SiPostgresql, color: "#4169E1" },
   Redis: { icon: SiRedis, color: "#DC382D" },
   Composer: { icon: MailIcon, color: "#885630" },
+  "Spring Boot": { icon: SiSpringboot, color: "#6DB33F" },
+  Redux: { icon: SiRedux, color: "#764ABC" },
+  Keycloak: { icon: SiKeycloak, color: "#003E54" },
+  RabbitMQ: { icon: SiRabbitmq, color: "#FF6600" },
+  Docker: { icon: SiDocker, color: "#2496ED" },
+  Postman: { icon: SiPostman, color: "#FF6C37" },
+  "Netflix Eureka": { icon: SiNetflix, color: "#E50914" },
+  "Framer Motion": { icon: SiFramermotion, color: "#0055FF" },
 };
 
 const ProjectCard = ({ project, index }) => {
