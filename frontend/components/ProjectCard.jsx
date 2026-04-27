@@ -62,6 +62,12 @@ const techIcons = {
   Postman: { icon: SiPostman, color: "#FF6C37" },
   "Netflix Eureka": { icon: SiNetflix, color: "#E50914" },
   "Framer Motion": { icon: SiFramer, color: "#0055FF" },
+  SpringBoot: { icon: SiSpringboot, color: "#6DB33F" },
+  Rabbitmq: { icon: SiRabbitmq, color: "#FF6600" },
+  Docker: { icon: SiDocker, color: "#2496ED" },
+  Postman: { icon: SiPostman, color: "#FF6C37" },
+  Netflix: { icon: SiNetflix, color: "#E50914" },
+  Framer: { icon: SiFramer, color: "#0055FF" },
 };
 
 const ProjectCard = ({ project, index }) => {
@@ -110,10 +116,14 @@ const ProjectCard = ({ project, index }) => {
           {/* Technology Badges */}
           <div className="flex flex-wrap gap-3">
             {project.technologies.map((tech, i) => {
-              const normalizedTech = tech.trim();
-              const techInfo = techIcons[normalizedTech];
+              const normalizedTech = tech.trim().toLowerCase();
+              // Find matching tech in techIcons (case-insensitive)
+              const techKey = Object.keys(techIcons).find(
+                (key) => key.toLowerCase() === normalizedTech
+              );
+              const techInfo = techKey ? techIcons[techKey] : null;
 
-              if (techInfo) {
+              if (techInfo && techInfo.icon) {
                 const IconComponent = techInfo.icon;
                 return (
                   <div
