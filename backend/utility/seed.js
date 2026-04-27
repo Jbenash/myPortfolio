@@ -178,7 +178,7 @@ const seedData = async () => {
         githubLink: "https://github.com/sjana24/apt_backend.git",
         demoLink:
           "https://www.linkedin.com/posts/ben-asher-78a638275_happy-to-showcase-a-project-my-team-and-i-activity-7442429898977292289-LNFk?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMxBVoBvUXeoxyRk_ulSL1iEvw_Xn3q1Iw",
-        screenshot: "/uploads/images/class_allocation_system.png",
+        screenshot: "https://myportfolio-1-5p8z.onrender.com/uploads/images/class_allocation_system.png",
         featured: true,
         order: 5,
       },
@@ -191,17 +191,15 @@ const seedData = async () => {
     "React",
     "Redux",
     "Keycloak",
-    "OAuth2",
     "RabbitMQ",
     "Docker",
     "Postman",
     "Netflix Eureka",
-    "Google Gemini API"
   ],
   githubLink: "https://github.com/Jbenash/Fitness_Tracker_backend.git",
   demoLink:
     "https://www.linkedin.com/posts/ben-asher-78a638275_softwareengineering-backenddevelopment-microservices-activity-7454441773990551552-D33D?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEMxBVoBvUXeoxyRk_ulSL1iEvw_Xn3q1Iw",
-  screenshot: "/uploads/images/Fitness_tracker.png",
+  screenshot: "https://myportfolio-1-5p8z.onrender.com/uploads/images/Fitness_tracker.png",
   featured: true,
   order: 6,
 }
